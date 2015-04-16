@@ -1,0 +1,100 @@
+body {
+	background-color: #FCC;
+	font-family: 'Open Sans', sans-serif;
+}
+
+main {
+	width:80%;
+	background-color: #FFF;
+	margin: 0px auto;
+	padding: 2%;
+}
+
+h1, h2 {
+	font-family: 'Megrim', cursive;
+}
+
+h1 {
+	font-size: 70px;
+	text-decoration: none;
+	text-align: center;
+	margin: 50px auto;
+}
+
+h2 {
+	font-size: 40px;
+}
+
+#pusheen-header {
+	width:100px;
+	vertical-align: bottom;
+}
+
+#pusheenicorn {
+	float: right;
+}
+
+.about-me {
+	float:left;
+	width:28%;
+	height:300px;
+	text-align: center;
+	margin:1%;
+	padding:1.5%;
+	background-image: url(/img/symphony.png);
+}
+
+ul, ol, dl {
+	list-style:none;
+	text-align: left;
+}
+
+a:link {
+	color:#00c8c4;
+}
+
+a:visited {
+	color: #00c8c4;
+}
+
+a:hover {
+	color:#6f6d73;
+}
+
+a:active {
+	color:#00c8c4;
+}
+
+
+.poem {
+	text-align: center;
+}
+
+blockquote {
+	width:300;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.title {
+	font-family: 'Open Sans', sans-serif;
+	text-decoration: none;
+}
+
+.about-me>h2 {
+	font-size: 30px;
+	text-decoration: none;
+}
+
+.table-decoration {
+	clear: left;
+	text-align: center;
+}
+
+table {
+	background-color:#F8F8F8;
+	width: 400px;
+	padding:2%;
+	margin: 0 auto;
+}
+

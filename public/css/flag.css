@@ -1,0 +1,173 @@
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Border Box...............set border-box as defaul box-sizing
+ *
+ * CONTAINER
+ * Flag Container...........wrapper around all flag style elements
+ *
+ * FLAG STYLE ELEMENTS
+ * Horizontal and Vertical Lines
+ * White Diagonals
+ * Red Diagonals
+ *
+ *
+ *
+
+**/
+
+
+/*-------------------*\
+  SETTINGS
+\*-------------------*/
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/*-------------------*\
+  CONTAINER
+\*-------------------*/
+
+.flag-container {
+	overflow: hidden;
+	margin: 0 auto;
+	width: 425px;
+	height: 225px;	
+	position: relative;
+	background-color: #00247D;
+	z-index: 1;
+}
+
+/*-------------------*\
+  FLAG STYLE ELEMENTS
+\*-------------------*/
+
+/* Horizontal and Vertical Lines */
+
+.horiz-red {
+	width: 100%;
+	height: 30%;
+	border-top: 15px solid white;
+	border-bottom: 15px solid white;
+	background-color: red;
+	z-index: 3;
+	position: absolute;
+	top: 35%;
+}
+
+.vert-red-top {
+	width:20%;
+	height:94px;
+	border-left: 15px solid white;
+	border-right: 15px solid white;
+	background-color: red;
+	position: absolute;
+	top: 0;
+	left:40%;
+	z-index: 4;
+}
+
+.vert-red-bottom {
+	width:20%;
+	height:94px;
+	border-left: 15px solid white;
+	border-right: 15px solid white;
+	background-color: red;
+	position: absolute;
+	bottom: 0;
+	left:40%;
+	z-index: 4;
+}
+
+/* White Diagonals */
+
+.diag-left-white {
+	width: 100px;
+	height: 110%;
+	-webkit-transform: skew(65deg);
+	   -moz-transform: skew(65deg);
+	     -o-transform: skew(65deg);
+	background: #ffffff;
+	position: absolute;
+	bottom:-10;
+	left:38%;
+	z-index: 2;
+}
+
+.diag-right-white {
+	width: 100px;
+	height: 110%;
+	-webkit-transform: skew(-65deg);
+	   -moz-transform: skew(-65deg);
+	     -o-transform: skew(-65deg);
+	background: #ffffff;
+	position: absolute;
+	bottom:-10;
+	left:38%;
+	z-index: 2;
+}
+
+/* Red Diagonals */
+
+.diag-top-left-red {
+	width: 30px;
+	height: 50%;
+	-webkit-transform: skew(65deg);
+	   -moz-transform: skew(65deg);
+	     -o-transform: skew(65deg);
+	background-color: red;
+	position: absolute;
+	bottom:50%;
+	left:15%;
+	z-index: 2;
+}
+
+.diag-bottom-right-red {
+	width: 30px;
+	height: 50%;
+	-webkit-transform: skew(65deg);
+	   -moz-transform: skew(65deg);
+	     -o-transform: skew(65deg);
+	background-color: red;
+	position: absolute;
+	top:50%;
+	right:15%;
+	z-index: 2;
+}
+
+.diag-top-right-red {
+	width: 30px;
+	height: 50%;
+	-webkit-transform: skew(-65deg);
+	   -moz-transform: skew(-65deg);
+	     -o-transform: skew(-65deg);
+	background-color: red;
+	position: absolute;
+	bottom:53%;
+	right:18%;
+	z-index: 2;
+}
+
+.diag-bottom-left-red {
+	width: 30px;
+	height: 50%;
+	-webkit-transform: skew(-65deg);
+	   -moz-transform: skew(-65deg);
+	     -o-transform: skew(-65deg);
+	background-color: red;
+	position: absolute;
+	top:53%;
+	left:18%;
+	z-index: 2;
+}
+
+
+
+
+

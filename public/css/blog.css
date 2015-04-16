@@ -1,0 +1,21 @@
+header {
+	background-image: url();
+	width: 90%;
+	margin: 0 auto;
+}
+
+nav > ul {
+	list-style: none;
+}
+
+nav > ul > li {
+	float: right;
+	width: 100px;
+	padding: 5px;
+	background-color: #6f6d73;
+}
+
+.page-wrapper {
+	margin: 0 auto;
+	width: 85%;
+}

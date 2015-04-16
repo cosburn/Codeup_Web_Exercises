@@ -1,0 +1,110 @@
+/* 
+*
+* Table of Contents
+*
+* Border Box Setting
+* Central Container
+* Generic Box Style
+* Box Style by Color
+* Hover Box Style by Color
+*
+*/
+
+
+
+
+/* Border Box */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Central Container */
+
+main {
+	margin: 0 auto;
+}
+.center_container {
+	width: 500px;
+	margin: 0 auto;
+}
+
+/* Generic Box Style */
+
+.box {	
+	border: 1px solid black;
+	width: 172px;
+	height: 72px;
+	padding: 10px;
+	margin: 10px;
+	color: #FFF;
+	font-style: bold;
+    -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, .3, 2);
+  	transition:         all 600ms cubic-bezier(0.175, 0.885, .3, 2);
+}
+
+div>a {
+	color: #fff;
+	font-style: bold;
+}
+
+a:hover {
+	color: #6f6d73;
+}
+
+/* Box Style by Color */
+
+.red {
+	background-color: red;
+}
+.orange {
+	background-color: orange;
+	margin-left: 30px;
+}
+.yellow {
+	background-color: yellow;
+	margin-left: 60px;
+}
+.green {
+	background-color: green;
+	margin-left: 90px;
+}
+.blue {
+	background-color: blue;
+	margin-left: 120px;
+}
+.violet {
+	background-color: violet;
+	margin-left: 150px;
+}
+
+/* Hover Box Style by Color */
+
+.red:hover {
+	margin-left: 30px;
+	background-color: #FF4B4B;
+}
+.orange:hover {
+	margin-left: 60px;
+	background-color: #ffb73d;
+}
+.yellow:hover {
+	margin-left: 90px;
+	background-color: #ffff87;
+}
+.green:hover {
+	margin-left: 120px;
+	background-color: #0d9b0d;
+}
+.blue:hover {
+	margin-left: 150px;
+	background-color: #5959ff;
+}
+.violet:hover {
+	margin-left: 180px;
+	background-color: #f7a5f7;
+}

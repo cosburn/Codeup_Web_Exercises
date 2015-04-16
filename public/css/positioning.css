@@ -1,0 +1,112 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.center_container {
+	width: 500px;
+	margin: 0 auto;
+}
+
+h1 {
+	margin-bottom: 0;
+}
+
+#corner-banner {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+/*.flex-container {
+  	margin: 0 auto;
+  	list-style: none;
+  
+  	display: -webkit-box;
+ 	display: -moz-box;
+  	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+  
+  	-webkit-flex-flow: row wrap;
+  	justify-content: space-around;
+}*/
+
+.box {	
+	border: 1px solid black;
+	width: 72px;
+	height: 72px;
+	padding: 10px;
+	color: #FFF;
+	font-style: bold;
+	position:absolute;
+	top:50px;
+	right:50px;
+ }
+
+.box-wrapper {
+	width: 122px;
+	height: 122px;
+	float: left;
+	position:relative;
+}
+
+.arrow {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.break {
+	clear:left;
+}
+
+div>a {
+	color: #fff;
+	font-style: bold;
+}
+
+a:hover {
+	color: #6f6d73;
+}
+
+.red {
+	background-color: red;
+}
+.orange {
+	background-color: orange;
+}
+.yellow {
+	background-color: yellow;
+}
+.green {
+	background-color: green;
+}
+.blue {
+	background-color: blue;
+}
+.violet {
+	background-color: violet;
+}
+
+.red:hover {
+	background-color: #FF4B4B;
+}
+.orange:hover {
+	background-color: #ffb73d;
+}
+.yellow:hover {
+	background-color: #ffff87;
+}
+.green:hover {
+	background-color: #0d9b0d;
+}
+.blue:hover {
+	background-color: #5959ff;
+}
+.violet:hover {
+	background-color: #f7a5f7;
+}
