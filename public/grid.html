@@ -2,13 +2,56 @@
 <html>
 	<head>
 		<title>GRIDDLIES!</title>
-		<link rel="stylesheet" src="/css/normalize.css">
-		<link rel="stylesheet" src="/css/grid.css">
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/grid.css">
+		<style>
+			
+			.column.one-half {
+				background-color: #CC81FF;
+			}
+
+			.column.one-third {
+				background-color: #E87756;
+			}
+
+			.column.one-fourth {
+				background-color: #FFF3B2;
+			}
+
+			.column.one-sixth {
+				background-color: #4BE868;
+			}
+
+			.column.one-eighth {
+				background-color: #4192FF;
+			}
+
+			.column.two-third {
+				background-color: #65EFFF;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container">
-		
-
+			<div class="row">
+				<div class="column one-fourth">1/4</div>
+				<div class="column one-half">1/2</div>
+				<div class="column one-fourth">1/4</div>
+			</div>
+			<div class="row">
+				<div class="column one-third">1/3</div>
+				<div class="column one-third">1/3</div>
+				<div class="column one-third">1/3</div>
+			</div>
+			<div class="row">
+				<div class="column one-third">1/3</div>
+				<div class="column two-third">2/3</div>
+			</div>
+			<div class="row">
+				<div class="column one-half">1/2</div>
+				<div class="column one-fourth">1/4</div>
+				<div class="column one-fourth">1/4</div>
+			</div>
 		</div>
 	</body>
 </html>
