@@ -1,3 +1,4 @@
+'use strict';
 
 // ignore these lines for now
 // just know that the variable 'color' will end up with a random value from the colors array
@@ -15,6 +16,7 @@ var favorite = 'orange'; // TODO: change this to your favorite color from the li
 
 // TODO: Using the ternary operator, conditionally log a statement that
 //       says whether the random color matches your favorite color.
+var message;
 
 if (color == "red") {
 	message = "Red is the color of an apple";
@@ -30,7 +32,7 @@ if (color == "red") {
 	message ="I don't know anything about that color.";
 }
 
-favorite = (color == "orange") ? "This is my favorite color!" : "This is NOT my favorite color." ;
+var favoriteMessage = (color == favorite) ? "This is my favorite color!" : "This is NOT my favorite color." ;
 
 console.log(color);
 console.log(message);
