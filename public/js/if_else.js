@@ -36,4 +36,4 @@ var favoriteMessage = (color == favorite) ? "This is my favorite color!" : "This
 
 console.log(color);
 console.log(message);
-console.log(favorite);
+console.log(favoriteMessage);
