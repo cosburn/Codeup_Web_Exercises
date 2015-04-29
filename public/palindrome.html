@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Palindrome</title>
+</head>
+<body>
+<script>
+	(function(){
+		"use strict";
+
+		var name = "Bob";
+		var not = "claire";
+		var sentence = "Too hot to hoot.";
+
+		function isPal (string) {
+			string = string.toLowerCase();
+			string = string.replace(/\W/g, "");f
+			console.log(string);
+			var array = string.split("");
+			var revArray = array.slice();
+			revArray.reverse();
+
+			console.log(array);
+			console.log(revArray);
+			
+			if (array.join("") == revArray.join("")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		console.log(isPal(name));
+		console.log(isPal(not));
+		console.log(isPal(sentence));
+
+	})();
+</script>
+</body>
+</html>

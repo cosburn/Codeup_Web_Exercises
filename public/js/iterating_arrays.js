@@ -15,7 +15,11 @@
 	console.log(catNames.length);
 
 	for (var i=0;i<catNames.length;i++){
-		console.log(catNames[i]);
+		console.log(catNames[i] + " in the for loop!");
 	}
+
+	catNames.forEach(function (name,index,array) {
+		console.log(name + " at index " + index + " in the forEach loop!");
+	})
 
 })();
