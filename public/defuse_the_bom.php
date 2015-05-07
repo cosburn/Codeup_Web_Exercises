@@ -28,14 +28,14 @@
     </style>
 </head>
 <body>
-    <h2 id="message">This BOM will self destruct in <span id="timer">100</span> seconds...</h2>
+    <h2 id="message">This BOM will self destruct in <span id="timer">50</span> seconds...</h2>
 
     <a id="defuser">Defuse the BOM</a>
 
     <script>
     	"use strict";
 
-        var detonationTimer = 100;
+        var detonationTimer = 50;
         var button = document.getElementById("defuser");
 
         //TODO: This function needs to be called once every second

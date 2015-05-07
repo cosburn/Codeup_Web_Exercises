@@ -5,6 +5,7 @@
 <body>
 
     <h1 id="main-header">Hello World!</h1>
+    <button id="cool-btn">Cool Button</button>
     <ul>
         <li data-dbid="1">Item 1</li>
         <li data-dbid="2">Item 2</li>
@@ -12,7 +13,9 @@
         <li data-dbid="4">Item 4</li>
         <li data-dbid="5">Item 5</li>
     </ul>
+    <button id="list-btn">Make the List Cooler</button>
     <h2 id="sub-header">Hello Again.</h2>
+    <button id="sub-head-btn">Do the thing</button>
     <p class="sub-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -22,37 +25,57 @@
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
         culpa qui officia deserunt mollit anim id est laborum.
     </p>
+    <button id="sub-par">Did to accomplish the mission?</button>
 
     <script>
 
         // todo: get the main header element by id
         var mainHeader = document.getElementById("main-header");
-        console.log(mainHeader + " 1 check")
+        var coolBtn = document.getElementById("cool-btn");
+        console.log(coolBtn);
 
-        // todo: set inner html of mainHeader to "JavaScript is Cool"
-        mainHeader.innerHTML = "JavaScript is Cool";
 
-        // todo: get the sub header element by id
+        coolBtn.addEventListener('click', listenerMainHead, false);
+
+        function listenerMainHead (event) {
+            // set inner html of mainHeader to "JavaScript is Cool"
+            console.log("click");
+            mainHeader.innerHTML = "JavaScript is cool";
+        }
+
+
+        // get the sub header element by id
         var subHeader = document.getElementById("sub-header");
-        console.log(subHeader + " 2 check")
+        var subHeadBtn = document.getElementById("sub-head-btn");
 
-        // todo: set the text color of subHeader to blue
-        subHeader.style["color"] = "blue";
+        var listenerSubHead = function (event) {
+            console.log("click");
+            // set the text color of subHeader to blue
+            subHeader.style["color"] = "blue";
+        }
+
+        subHeadBtn.addEventListener("click", listenerSubHead, false);
 
         // todo: get all list items
         var listItems = document.getElementsByTagName("li");
-        console.log(listItems + "3 check")
+        var listBtn = document.getElementById("list-btn");
 
-        // todo: set text color on every other list item to grey
-        for (i=0; i<listItems.length; i++) {
-            if (i % 2 == 0) {
-                listItems[i].style["background-color"] = "grey";
-                console.log(listItems[i].attributes["data-dbid"].value);
-            } 
-            if (listItems[i].attributes["data-dbid"].value == "1") {
-                listItems[i].style["color"] = "blue";
+        var listenerList = function (event) {
+            console.log("click");
+            // todo: set text color on every other list item to grey
+            for (i=0; i<listItems.length; i++) {
+                if (i % 2 == 0) {
+                    listItems[i].style["background-color"] = "grey";
+                    console.log(listItems[i].attributes["data-dbid"].value);
+                } 
+                if (listItems[i].attributes["data-dbid"].value == "1") {
+                    listItems[i].style["color"] = "blue";
+                }
             }
         }
+
+        listBtn.addEventListener("click", listenerList, false);
+
         // todo: set text color of li with dbid = 1 to blue
         // (??...DID THIS IN ABOVE LOOP BC I COULDN'T FIGURE OUT HOW TO TARGET AN ITEM BY AN ATTRIBUTE VALUE...??)
         // var dbId1 = listItems.attributes["data-dbid"].1;
@@ -61,10 +84,15 @@
 
         // todo: get all elements with class name sub-paragraph
         var subParagraphs = document.getElementsByClassName("sub-paragraph");
-        console.log(subParagraphs + "5 check")
+        var subPar = document.getElementById("sub-par");
 
         // todo: change the text in the first sub paragraph to "Mission Accomplished!"
-        subParagraphs[0].innerText = "Mission Accomplished!";
+        var listenerSubPar = function(event) {
+            console.log("click");
+            subParagraphs[0].innerText = "Mission Accomplished!";
+        }
+
+        subPar.addEventListener("click", listenerSubPar, false);
 
     </script>
 
