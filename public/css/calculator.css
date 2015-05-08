@@ -1,0 +1,21 @@
+.container {
+	margin: 0 auto;
+	width: 80%;
+	max-width:1200px;
+}
+.row {
+	width:100%;
+}
+.row:after {
+	clear:both;
+}
+.column {
+	float: left;
+	padding: 10px;
+}
+.column.one {
+	width: 8.3%;
+}
+.column.two {
+	width: ;
+}

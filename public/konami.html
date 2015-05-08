@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Do you know the code?</title>
+</head>
+<body id="game">
+	<h1>What's the password?</h1>
+	<script>
+		"use strict";
+		var body = document.getElementById("game");
+		var counter = 0;
+		var secretCode = [38,38,40,40,37,39,37,39,66,65,13];	
+		var codeGuess = [];
+		console.log(counter);
+
+		function konamiCheck (event) {
+			console.log("running");
+			//save input key as variable
+			var key = event.keyCode;
+			console.log(event.keyCode);
+			//if the key input matches that item in the konami code (starting at 0), append that to the guess array, and increase counter by 1
+			if (key == secretCode[counter]) {
+				codeGuess.push(key);
+				counter++;
+			} else {
+				codeGuess = [];
+				counter = 0;
+			}
+			//if the two arrays are the same length, they got it
+			if (codeGuess.length == secretCode.length) {
+				alert("YASssSSSSsssSSSSSsssS");
+				body.innerHTML = "<img src='http://cf.ltkcdn.net/cats/images/std/159706-357x421-kitten.jpg'>"
+			}
+
+			console.log(codeGuess);
+			console.log(counter);
+			return codeGuess;
+			return counter;
+		}
+
+		body.addEventListener("keyup", konamiCheck, false);
+
+	</script>
+
+</body>
+</html>
