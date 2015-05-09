@@ -1,8 +1,21 @@
-.container {
-	margin: 0 auto;
-	width: 80%;
-	max-width:1200px;
+.calc-container {
+	margin: auto auto;
+	width: 400px;
 }
+
+a {
+	padding:20px;
+	background-color: #8A4DCC;
+	color:#fff;
+	border:1px solid #fff;
+	text-decoration: none;
+	text-align: center;
+	font-size: 24px;
+}
+a:hover {
+	background-color: #56307F; 
+}
+
 .row {
 	width:100%;
 }
@@ -17,5 +30,35 @@
 	width: 8.3%;
 }
 .column.two {
-	width: ;
+	width: 16.6%;
+}
+.column.three {
+	width: 25%;
+}
+.column.four {
+	width: 33.3%;
+}
+.column.five {
+	width: 41.6%;
+}
+.column.six {
+	width: 50%;
+}
+.column.seven {
+	width: 58.3%;
+}
+.column.eight {
+	width: 66.6%;
+}
+.column.nine {
+	width: 75%;
+}
+.column.ten {
+	width: 83.3%;
+}
+.column.eleven {
+	width: 91.6%;
+}
+.column.twelve {
+	width: 100%;
 }

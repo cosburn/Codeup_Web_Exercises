@@ -4,18 +4,40 @@
 		<title>Calculator</title>
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/box_model.css">
-		<link rel="stylesheet" href="calculator.css">
+		<link rel="stylesheet" href="css/calculator.css">
 	</head>
 	<body>
-		<script src="js/calculator.js"></script>
-		<header>
-			<h1>Calculator</h1>
-		</header>
-		<section id="calc">
-			<input type="text" id="left-operand" name="left-operand">
-			<input type="text" id="operator" name="operator">
-			<input type="text" id="right-operand" name="right-operand">
-			
+		<section id="calc" class="calc-container">
+			<header>
+				<h1>Calculator</h1>
+			</header>
+			<section id="text-fields">
+				<div class="row">
+						<input class="column five" type="text" id="left-operand" name="left-operand" value="">
+						<input  class="column two" type="text" id="operator" name="operator" value="">
+						<input  class="column five" type="text" id="right-operand" name="right-operand" value="">
+				</div>
+			</section>
+			<section id="buttons">
+				<a id="1-button" class="num button column three" href="#">1</a>
+				<a id="2-button" class="num button column three" href="#">2</a>
+				<a id="3-button" class="num button column three" href="#">3</a>
+				<a id="plus-button" class="op button column three" href="#">+</a>
+				<a id="4-button" class="num button column three" href="#">4</a>
+				<a id="5-button" class="num button column three" href="#">5</a>
+				<a id="6-button" class="num button column three" href="#">6</a>
+				<a id="minus-button" class="op button column three" href="#">-</a>
+				<a id="7-button" class="num button column three" href="#">7</a>
+				<a id="8-button" class="num button column three" href="#">8</a>
+				<a id="9-button" class="num button column three" href="#">9</a>
+				<a id="mult-button" class="op button column three" href="#">*</a>
+				<a id="0-button" class="num button column three" href="#">0</a>
+				<a id="dec-button" class="num button column three" href="#">.</a>
+				<a id="equals-button" class="button column three" href="#">=</a>
+				<a id="div-button" class="op button column three" href="#">/</a>
+				<a id="clear-button" class="button column twelve" href="#">clear</a>
+			</section>
 		</section>
+		<script src="js/calculator.js"></script>
 	</body>
 </html>
