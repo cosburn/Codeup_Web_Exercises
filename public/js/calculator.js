@@ -1,56 +1,33 @@
 "use strict";
 
 //global variables
+
 var numButtons = document.getElementsByClassName("num");
 var opButtons = document.getElementsByClassName("op");
-var inputFields = document.getElementsByTagName("input");
+var inputFields = document.getElementsByTagName("textarea");
 var leftOp = "";
 var operator = "";
+var tempOperator;
 var rightOp = "";
 var answer;
 
-//math functions, solve and clear functions
+//percent and negative/positive functions
 
-function plus() {
-	answer = +leftOp + +rightOp;
-	console.log(leftOp + " + " + rightOp + " = " + answer);
-	clear();
-	leftOp = answer;
-	document.getElementById("left-operand").value = leftOp;
-}
-function minus() {
-	answer = +leftOp - +rightOp;
-	console.log(leftOp + " - " + rightOp + " = " + answer);
-	clear();
-	leftOp = answer;
-	document.getElementById("left-operand").value = leftOp;
-}
-function multiply() {
-	answer = +leftOp * +rightOp;
-	console.log(leftOp + " X " + rightOp + " = " + answer);
-	clear();
-	leftOp = answer;
-	document.getElementById("left-operand").value = leftOp;
-}
-function divide() {
-	answer = +leftOp / +rightOp;
-	console.log(leftOp + " / " + rightOp + " = " + answer);
-	clear();
-	leftOp = answer;
-	document.getElementById("left-operand").value = leftOp;
-}
 function makePercent() {
+	console.log("percent");
 	if (rightOp) {
 		var changedNum = +rightOp / 100;
 		console.log(rightOp + " as a percent is " + changedNum);
 		rightOp = changedNum;
-		document.getElementById("right-operand").value = changedNum;
+		// document.getElementById("right-operand").value = changedNum;
+		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	} else {
 		var changedNum = +leftOp / 100;
 		console.log(leftOp + " as a percent is " + changedNum);
 		clear();
 		leftOp = changedNum;
-		document.getElementById("left-operand").value = changedNum;
+		//document.getElementById("left-operand").value = changedNum;
+		document.getElementById("left-operand").value = leftOp;
 	}
 }
 function changeSign() {
@@ -58,14 +35,14 @@ function changeSign() {
 		var changedNum = -(+rightOp);
 		console.log("the opposite of " + rightOp + " is " + changedNum);
 		rightOp = changedNum;
-		document.getElementById("right-operand").value = changedNum;
-		console.log("right");
+		//document.getElementById("right-operand").value = changedNum;
+		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	} else {
-		console.log("no right");
 		changedNum = -(+leftOp);
 		console.log("the opposite of " + leftOp + " is " + changedNum);
 		clear();
 		leftOp = changedNum;
+		//document.getElementById("left-operand").value = leftOp;
 		document.getElementById("left-operand").value = leftOp;
 	}
 	
@@ -76,20 +53,23 @@ function changeSign() {
 function solve() {
 	if (rightOp) {
 		if (operator == "+") {
-			plus();
+			answer = +leftOp + +rightOp;
 		} else if (operator == "-") {
-			minus();
-		} else if (operator == "X") {
-			multiply();
+			answer = +leftOp - +rightOp;
+		} else if (operator == "x") {
+			answer = +leftOp * +rightOp;
 		} else if (operator == "/") {
-			divide();
+			answer = +leftOp / +rightOp;
 		} 
+		clear();
+		leftOp = answer;
+		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	}
 }
 function changeInput() {
-	if (operator == "%") {
+	if (tempOperator == "%") {
 			makePercent();
-		} else if (operator == "+ / -") {
+		} else if (tempOperator == "+ / -") {
 			changeSign();
 		}
 }
@@ -108,7 +88,8 @@ function clear() {
 function numButtonListener(e) {
 	if (operator) {
 		rightOp+=this.innerHTML;
-		document.getElementById("right-operand").value = rightOp;
+		//document.getElementById("right-operand").value = rightOp;
+		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	} else {
 		if (leftOp == answer) {
 			clear();
@@ -117,21 +98,22 @@ function numButtonListener(e) {
 			leftOp = "";
 		}
 		leftOp+=this.innerHTML;
-		document.getElementById("left-operand").value = leftOp;
+		//document.getElementById("left-operand").value = leftOp;
+		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	}
 	e.preventDefault();
 }
 function opButtonListener(e) {
-	operator = this.innerHTML;
+	tempOperator = this.innerHTML;
 	console.log(operator);
-	if ((operator == "%") || (operator == "+ / -")) {
+	if ((tempOperator == "%") || (tempOperator == "+ / -")) {
 		changeInput();
-		operator = document.getElementById("operator").value;
 		console.log("changed op back to " + operator);
 	} else {
+		operator = this.innerHTML;
 		console.log('CHANGING OPERATOR');
-		document.getElementById("operator").value = operator;
-		solve();
+		//document.getElementById("operator").value = operator;
+		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	}
 	e.preventDefault();
 }
