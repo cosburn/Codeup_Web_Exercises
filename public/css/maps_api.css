@@ -1,5 +1,18 @@
+body {
+	background-color: #444554;
+
+}
+header {
+	text-align: center;
+ 	color: #444554;
+ 	font-family: 'Questrial', sans-serif;
+}
+h1 {
+	color: #F4F5FF;
+	font-family: 'Questrial', sans-serif;
+}
+
 #map-canvas {
-	width:600px;
-	height:400px;
-	border:1px solid black;
+	height:500px;
+	border-bottom: 20px solid #444554;
 }

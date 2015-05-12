@@ -2,45 +2,77 @@
 <html>
 <head>
 	<title>Google Map!</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/box_sizing.css">
+	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/maps_api.css">
 </head>
 <body>
-	<h1>The Best Restaurant</h1>
-	<div id="map-canvas"></div>
+	<header>
+		<h1>The Best Restaurants</h1>
+		<div id="map-canvas"></div>
+	</header>
+	<section>
+
+	</section>
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
-
 	<script type="text/javascript">
 		//new instance of the Geocode() object
 		var geocoder = new google.maps.Geocoder();
-
-		var address = "741 W Ashby Pl, San Antonio, TX, 78212";
-
-		//Geocode my address
-		geocoder.geocode( {"address":address}, function(results,status) {
-			//check for a successful result
-			if (status == google.maps.GeocoderStatus.OK) {
-				//set map option
-				var mapOptions = {
-					zoom: 15,
-					center: results[0].geometry.location
-				}
-				console.log(results);
-				//render the map
-				var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-				var marker = new google.maps.Marker({
-					position: results[0].geometry.location,
-					map: map
-				});	
-				var infowindow = new google.maps.InfoWindow({
-					content:"Pho Sure<br>(210) 733-8473<br><a href='http://www.pho-sure.com/menu.html'>View Menu</a>"
-				});	
-				//open the info window using the map and the marker
-				infowindow.open(map,marker);
-			} else {
-				alert("Geocoding was not successful. Status: " + status);
+		var phoSure = {
+			name: "Pho Sure",
+			address: "741 W Ashby Pl, San Antonio, TX, 78212",
+			phone: "(210) 733-8473"
+		}
+		var vegeria = {
+			name: "Vegeria",
+			address: "8407 Broadway St, San Antonio, TX 78209",
+			phone: "(210) 826-4223"
+		}
+		var senorVeggie = {
+			name: "Senor Veggie",
+			address: "620 S Presa St, San Antonio, TX 78210",
+			phone: "(210) 228-0073"
+		}
+		var addresses = [phoSure,vegeria,senorVeggie];
+		//set map options
+		var mapOptions = {
+			zoom: 11,
+			center: {
+				lat: 29.4670428, 
+				lng: -98.465652799999
 			}
-		})
+		}
+		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+		//Geocode my restaurants
+		for (i=0; i<addresses.length; i++) {
+			geocoder.geocode( {"address":addresses[i].address}, function(results,status) {
+				//check for a successful result
+				if (status == google.maps.GeocoderStatus.OK) {
+					
+					console.log(results[0].geometry.location);
+					//render the map
+					var marker = new google.maps.Marker({
+						position: results[0].geometry.location,
+						map: map,
+						animation: google.maps.Animation.DROP,
+						//icon: "img/noodle_icon.png",
+					});	
+					var infowindow = new google.maps.InfoWindow({
+						content: addresses[i].name
+					});	
+					
+					//open the info window using the map and the marker
+					infowindow.open(map,marker);
+					
+					
+				} else {
+					alert("Geocoding was not successful. Status: " + status);
+				}
+			})
+		}
 	</script>
 </body>
 </html>
