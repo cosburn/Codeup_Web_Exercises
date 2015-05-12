@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google Map!</title>
+	<link rel="stylesheet" href="css/maps_api.css">
+</head>
+<body>
+	<h1>The Best Restaurant</h1>
+	<div id="map-canvas"></div>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
+
+	<script type="text/javascript">
+		//new instance of the Geocode() object
+		var geocoder = new google.maps.Geocoder();
+
+		var address = "741 W Ashby Pl, San Antonio, TX, 78212";
+
+		//Geocode my address
+		geocoder.geocode( {"address":address}, function(results,status) {
+			//check for a successful result
+			if (status == google.maps.GeocoderStatus.OK) {
+				//set map option
+				var mapOptions = {
+					zoom: 15,
+					center: results[0].geometry.location
+				}
+				console.log(results);
+				//render the map
+				var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+				var marker = new google.maps.Marker({
+					position: results[0].geometry.location,
+					map: map
+				});	
+				var infowindow = new google.maps.InfoWindow({
+					content:"Pho Sure<br>(210) 733-8473<br><a href='http://www.pho-sure.com/menu.html'>View Menu</a>"
+				});	
+				//open the info window using the map and the marker
+				infowindow.open(map,marker);
+			} else {
+				alert("Geocoding was not successful. Status: " + status);
+			}
+		})
+	</script>
+</body>
+</html>
