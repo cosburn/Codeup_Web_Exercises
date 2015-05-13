@@ -1,10 +1,9 @@
 "use strict";
 
 $(document).ready(function() {
-	$("#main-container")
-		.css("background-color","pink")
-		.css("color","#6f6d73")
-		.css("padding","30px");
-	$(".codeup").css("border","1px solid red").css("padding","5px");
+	$("li").css("font-size","20px");
+	$("h1").css("color","red");
+	$("p").css("background-color","#d3d3d3");
+	alert($("h1").html());
 });
 
