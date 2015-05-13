@@ -1,9 +1,9 @@
 "use strict";
 
 $(document).ready(function() {
-	$("li").css("font-size","20px");
-	$("h1").css("color","red");
-	$("p").css("background-color","#d3d3d3");
-	alert($("h1").html());
+	$("li,h1,p")
+		.css("font-size","20px")
+		.css("color","red") 
+		.css("background-color","#d3d3d3");
 });
 
