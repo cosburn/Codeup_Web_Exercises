@@ -1,9 +1,19 @@
 "use strict";
 
 $(document).ready(function() {
-	$("li,h1,p")
-		.css("font-size","20px")
-		.css("color","red") 
-		.css("background-color","#d3d3d3");
+	$("#main-header").click(function() {
+		$(this).css("background-color","blue");
+	});
+	$("p").dblclick(function() {
+		$(this).css("font-size","18px");
+	});
+	$("li").hover(
+		function() {
+			$(this).css("color","red");
+		},
+		function() {
+			$(this).css("color","#fff");
+		}
+	);
 });
 
