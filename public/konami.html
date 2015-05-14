@@ -5,9 +5,11 @@
 </head>
 <body id="game">
 	<h1>What's the password?</h1>
+
+	<script src="/js/jquery-2.1.4.min.js"></script>
 	<script>
 		"use strict";
-		var body = document.getElementById("game");
+		// var body = document.getElementById("game");
 		var counter = 0;
 		var secretCode = [38,38,40,40,37,39,37,39,66,65,13];	
 		var codeGuess = [];
@@ -29,16 +31,17 @@
 			//if the two arrays are the same length, they got it
 			if (codeGuess.length == secretCode.length) {
 				alert("YASssSSSSsssSSSSSsssS");
-				body.innerHTML = "<img src='http://cf.ltkcdn.net/cats/images/std/159706-357x421-kitten.jpg'>"
+				//body.innerHTML = "<img src='http://cf.ltkcdn.net/cats/images/std/159706-357x421-kitten.jpg'>"
+				$("body").html("<img src='http://cf.ltkcdn.net/cats/images/std/159706-357x421-kitten.jpg'>");
 			}
 
 			console.log(codeGuess);
 			console.log(counter);
-			return codeGuess;
-			return counter;
 		}
 
-		body.addEventListener("keyup", konamiCheck, false);
+		//body.addEventListener("keyup", konamiCheck, false);
+		//trying with jquery
+		$("body").keydown(konamiCheck);
 
 	</script>
 
