@@ -14,35 +14,28 @@ var answer;
 //percent and negative/positive functions
 
 function makePercent() {
-	console.log("percent");
 	if (rightOp) {
 		var changedNum = +rightOp / 100;
 		console.log(rightOp + " as a percent is " + changedNum);
 		rightOp = changedNum;
-		// document.getElementById("right-operand").value = changedNum;
 		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	} else {
 		var changedNum = +leftOp / 100;
 		console.log(leftOp + " as a percent is " + changedNum);
 		clear();
 		leftOp = changedNum;
-		//document.getElementById("left-operand").value = changedNum;
 		document.getElementById("left-operand").value = leftOp;
 	}
 }
 function changeSign() {
 	if (rightOp) {
 		var changedNum = -(+rightOp);
-		console.log("the opposite of " + rightOp + " is " + changedNum);
 		rightOp = changedNum;
-		//document.getElementById("right-operand").value = changedNum;
 		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	} else {
 		changedNum = -(+leftOp);
-		console.log("the opposite of " + leftOp + " is " + changedNum);
 		clear();
 		leftOp = changedNum;
-		//document.getElementById("left-operand").value = leftOp;
 		document.getElementById("left-operand").value = leftOp;
 	}
 	
@@ -88,7 +81,6 @@ function clear() {
 function numButtonListener(e) {
 	if (operator) {
 		rightOp+=this.innerHTML;
-		//document.getElementById("right-operand").value = rightOp;
 		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	} else {
 		if (leftOp == answer) {
@@ -98,7 +90,6 @@ function numButtonListener(e) {
 			leftOp = "";
 		}
 		leftOp+=this.innerHTML;
-		//document.getElementById("left-operand").value = leftOp;
 		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	}
 	e.preventDefault();
@@ -112,7 +103,6 @@ function opButtonListener(e) {
 	} else {
 		operator = this.innerHTML;
 		console.log('CHANGING OPERATOR');
-		//document.getElementById("operator").value = operator;
 		document.getElementById("left-operand").value = leftOp+" "+operator+" "+rightOp;
 	}
 	e.preventDefault();
