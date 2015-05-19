@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>National Parks | FAQs</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<style>
+	.invisible {
+		display:none;
+	}
+	</style>
+</head>
+<body>
+	<h1>Frequently Asked Questions</h1>
+	<p>
+		National Parks are pretty confusing, we know this. We've compiled this handy list of questions that people ALWAYS ask because, frankly, we're tired of all y'all getting up in our face all the time. Refer to this list, and go hike a mountain. The end.
+	</p>
+	<dl>
+		<dt>1. What is a park?</dt>
+			<dd class="invisible">It's a big area that's awesome and filled with nature-y stuff to do and see.</dd>
+		<dt>2. How do I park?</dt>
+			<dd class="invisible">You go to the park and you be there and you enjoy it. Then you leave and go somewhere that's not a park and you cry.</dd>
+		<dt>3. Can I be a park</dt>
+			<dd class="invisible">No, you clearly are not worthy. Parks are not weak enough to need to consult FAQ pages.</dd>
+		<dt>4. Will bears be at the park?</dt>
+			<dd class="invisible">Probably, I don't know. Let me go check my bear-radar satellite for the location of all bears in the whole world and see if some decided to come by the park. OH WAIT I CAN'T BECAUSE THAT'S STUPID DON'T ASK THAT. Beware of bears.</dd>
+		<dt>5. What about coyotes?</dt>
+			<dd class="invisible">What are you, a cat? What are you afraid of? Weakling.</dd>
+		<dt>6. Can I eat popcorn at the park?</dt>
+			<dd class="invisible">You can, at your own risk. If a popcorn hound finds you and drinks your soul from your gut through the digesting popcorn portals, don't say we didn't warn you.</dd>
+		<dt>7. [This question is too evil to share.]</dt>
+			<dd class="invisible">WE SAID IT'S TOO EVIL. If you want to ask this question, turn inward, face the demon inside you. Also make sure to never visit a national park. Ever.</dd>
+		<dt>8. What should I bring to the park?</dt>
+			<dd class="invisible">Why do you have so many stupid questions? You don't deserve to be in a park. </dd>
+		<dt>9. Can I drive my car to the park?</dt>
+			<dd class="invisible">Is your car a bear? Yeah, didn't think so.</dd>
+		<dt>10. Why parks?</dt>
+			<dd class="invisible">Just leave.</dd>
+	</dl>
+	<h1>Park Facts</h1>
+	<h3>Arches</h3>
+	<ul>
+		<li>This park is made up entirely of arches. It is impossible to traverse.</li>
+		<li>Archery was invented here.</li>
+		<li>Flat-footed humans are not allowed.</li>
+	</ul>
+	<h3>Badlands</h3>
+	<ul>
+		<li>Occasionally called "Super Badlands."</li>
+		<li>Misnomer - the lands are actually quite kind but find it dificult to make friends due to their intimidating name.</li>
+		<li>Wishes it were really named "Jazzhands-lands."</li>
+	</ul>
+	<h3>Carlsbad Caverns</h3>
+	<ul>
+		<li>Named after that time Carl accidentally shoved lava all through the ground.</li>
+		<li>Literally identical experience to walking inside swiss cheese.</li>
+		<li>Actually made out of cheese.</li>
+	</ul>
+
+	<script src="/js/jquery-2.1.4.min.js"></script>
+	<script>
+		$("dt").click(function(e) {
+			$(this).next().toggleClass("invisible");
+		});
+
+		$("ul").each(function(index) {
+			$(this).children("li").first().css("font-weight","bold");
+		});
+
+		$("li").click(function(e) {
+			$(this).parent().addClass("invisible");
+		});
+
+	</script>
+
+</body>
+</html>
