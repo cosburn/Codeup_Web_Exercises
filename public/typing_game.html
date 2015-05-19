@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Typing Game</title>
+</head>
+<body>
+	<h1>Copy this:</h1> 
+	<label name="type-input">
+		<h1>
+			<div id="challenge-display">...get ready!</div>
+		</h1>
+	</label>
+	<div id="countdown">
+	</div>
+	<input type="text" name="type-input" id="input-box">
+	<h2>Score: <span id="score-display">0</span></h2>
+
+	<script src="/js/jquery-2.1.4.min.js"></script>
+	<script>
+	//On page load, alert the user of the rules of the game:
+	// $(document).ready(function() {
+	// 	alert("The rules of the game are simple. Copy the text into the box and hit enter when you're finished. For each finished, get a point. If you mess up or run out of time, the game ends.");
+	// });
+
+	//Create a new random string of text on a timer
+	var string = "";
+	var challenge = "";
+	var guess = "";
+	var countdown = 100;
+	var counter = 0;
+	var score = 0;
+
+	function gameOver () {
+		alert("GAME OVER :(");
+	}
+
+	function newChallenge() {
+		string = "";
+			for (var i=0; i<5; i++) {
+				var char = Math.floor((Math.random()*25)+65);
+				string += String.fromCharCode(char);
+			}
+			challenge = string.toLowerCase();
+			$("#challenge-display").html(challenge);
+	}
+
+	var countdownID = setInterval(function updateCountdown()
+		{
+			if (countdown == 0) {
+				gameOver();
+			} else if (countdown > 0) {
+				$("#countdown").html(countdown);
+			}
+			countdown--;
+
+		},1000);
+
+	var intervalID = setInterval(function changeChallenge()
+		{	
+			newChallenge();
+		},5000);
+	
+	function checkChar(keyCode) {
+		//check the character of that keycode against whatever letter in the string we're at
+		console.log("the new challenge is: " + challenge);
+		character = String.fromCharCode(keyCode);
+		guess += character;
+		console.log("guess = "+guess);
+		if (guess[counter] == challenge[counter]) {
+			if (guess == challenge) {
+				score++;
+				$("#score-display").html(score);
+				guess = "";
+				counter = 0;
+				newChallenge();
+			} else {
+				counter++;
+			}
+		console.log("counter = "+ counter);
+		} else {
+			gameOver();
+		}
+	};
+
+	//Check the user input against the random string	
+	$("body").keypress(function(e){
+		checkChar(e.keyCode);
+	});
+
+
+	//If the user is correct, give them a point
+	//If the user makes an error (before hitting enter) or runs out of time, end game
+
+	//prompt user to play again
+
+	</script>
+
+</body>
+</html>
