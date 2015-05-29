@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="posts"></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+	(function(){
+
+		"use strict";
+		var htmlString = "";
+		var post = "";
+		var blogPosts = $.get("/data/blog.json");
+
+		blogPosts.done(function(data){
+			$(data).each(function(index,element) {
+				post = "";
+				post += "<h2>" + element.title + "</h2>";
+				post += "<p>" + element.content + "</p>";
+				post += "<p class='categories'>" + element.categories.join(", ") + "</p>";
+				post += "<p class='date'>" + element.date + "</p>";
+				htmlString = post + htmlString;
+			})
+			$("#posts").html(htmlString);
+		});
+
+	})();
+
+
+	</script>
+</body>
+</html>

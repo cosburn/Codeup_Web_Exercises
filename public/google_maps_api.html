@@ -20,25 +20,68 @@
 	<script type="text/javascript">
 		//new instance of the Geocode() object
 		var geocoder = new google.maps.Geocoder();
+
+		var handleGeocode = function(results,status) {
+			//check for a successful result
+			if (status == google.maps.GeocoderStatus.OK) {
+				console.log(this);
+				
+				console.log(results[0].geometry.location);
+				//render the map
+				var marker = new google.maps.Marker({
+					position: results[0].geometry.location,
+					map: map,
+					animation: google.maps.Animation.DROP,
+					icon: "img/noodle_icon.png"
+				});	
+				console.log(results[0]);
+				var infowindow = new google.maps.InfoWindow({
+					content: this.name
+				});	
+				
+				// //open the info window using the map and the marker
+				infowindow.open(map,marker);
+				
+				
+			} else {
+				alert("Geocoding was not successful. Status: " + status);
+			}
+		};
+
 		var phoSure = {
 			name: "Pho Sure",
 			address: "741 W Ashby Pl, San Antonio, TX, 78212",
-			phone: "(210) 733-8473"
+			phone: "(210) 733-8473",
+			icon: "img/noodle_icon.png",
+			callback: handleGeocode
 		}
 		var vegeria = {
 			name: "Vegeria",
 			address: "8407 Broadway St, San Antonio, TX 78209",
-			phone: "(210) 826-4223"
+			phone: "(210) 826-4223",
+			icon: "img/noodle_icon.png",
+			callback: handleGeocode
 		}
 		var senorVeggie = {
 			name: "Senor Veggie",
 			address: "620 S Presa St, San Antonio, TX 78210",
-			phone: "(210) 228-0073"
+			phone: "(210) 228-0073",
+			icon: "img/noodle_icon.png",
+			callback: handleGeocode
 		}
 		var addresses = [phoSure,vegeria,senorVeggie];
+
+
+		// var setMarkers = function() {
+		// 	for (var i = 0; i < addresses.length; i++) {
+		// 		console.log(addresses[i]);
+		// 		handleGeocode(map,addresses[i]);
+		// 	}
+		// }
+
 		//set map options
 		var mapOptions = {
-			zoom: 11,
+			zoom: 12,
 			center: {
 				lat: 29.4670428, 
 				lng: -98.465652799999
@@ -47,32 +90,13 @@
 		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 		//Geocode my restaurants
-		for (i=0; i<addresses.length; i++) {
-			geocoder.geocode( {"address":addresses[i].address}, function(results,status) {
-				//check for a successful result
-				if (status == google.maps.GeocoderStatus.OK) {
-					
-					console.log(results[0].geometry.location);
-					//render the map
-					var marker = new google.maps.Marker({
-						position: results[0].geometry.location,
-						map: map,
-						animation: google.maps.Animation.DROP,
-						//icon: "img/noodle_icon.png",
-					});	
-					var infowindow = new google.maps.InfoWindow({
-						content: addresses[i].name
-					});	
-					
-					//open the info window using the map and the marker
-					infowindow.open(map,marker);
-					
-					
-				} else {
-					alert("Geocoding was not successful. Status: " + status);
-				}
-			})
-		}
+		addresses.forEach(function(element,index,array) {
+			console.log("running");
+			geocoder.geocode( {"address":element.address}, function(results, status) {
+				element.callback(results,status);
+			});
+		});
+		// geocoder.geocode( {"address":addresses.address}, setMarkers);
 	</script>
 </body>
 </html>

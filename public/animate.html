@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Animate</title>
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0;
+        }
+        #btn-animate {
+            margin: 15px;
+        }
+        .box {
+            background-color: #000033;
+            height: 250px;
+            margin: 15px;
+            position: relative;
+            width: 250px;
+        }
+    </style>
+</head>
+<body cz-shortcut-listen="true">
+
+    <p>
+        <button id="btn-move-left">Move Left</button>
+
+        <button id="btn-move-right">Move Right</button>
+
+        <button id="btn-scale-wide">Scale Wide</button>
+
+        <button id="btn-scale-narrow">Scale Narrow</button>
+
+        <button id="btn-disappear">Disappear It</button>
+
+        <button id="btn-reappear">Reappear It</button>
+
+        <button id="btn-all">All The Things!</button>
+    </p>
+
+    <div id="animate-box" class="box"></div>
+
+    <script src="./animate_files/jquery.min.js"></script>
+    <script>
+
+        (function(){
+
+            'use strict';
+
+            // todo: Move the box by 100 pixels from the left
+            $("#btn-move-left").click(function() {
+                $("#animate-box").animate ({
+                    left: "+=100"
+                },500);
+            });
+            $("#btn-move-right").click(function() {
+                $("#animate-box").animate ({
+                    left: "-=100"
+                },500);
+            });
+
+            // todo: Scale the width up by 50%
+            $("#btn-scale-wide").click(function() {
+                $("#animate-box").animate ({
+                    width: "+=125"
+                },500);
+            });
+            $("#btn-scale-narrow").click(function() {
+                $("#animate-box").animate ({
+                    width: "-=125"
+                },500);
+            });
+
+            // todo: Use opacity to make the box invisible
+            $("#btn-disappear").click(function() {   
+                $("#animate-box").animate ({
+                    opacity: 0
+                },1000);
+            });
+
+            // todo: Make the box appear again with opacity
+            $("#btn-reappear").click(function() {   
+                $("#animate-box").animate ({
+                    opacity: 1
+                },1000);
+            });
+
+            // todo: Once all is done see if you can chain all the animations
+            // to happen with the `Animate all` button.
+            // Refresh to start over before hitting the button.
+            $("#btn-all").click(function() {
+                $("#animate-box")
+                    .animate({left: "+=100"},100)
+                    .animate({left: "-=100"},100)
+                    .animate({width: "+=125"},100)
+                    .animate({width: "-=125"},100)
+                    .animate({opacity: 0},500)
+                    .animate({opacity: 1},1000,function(){alert("hey")});
+            });
+
+        })();
+    
+    </script>
+
+</body></html>

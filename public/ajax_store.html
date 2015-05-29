@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+<button id="refresh-table">Refresh</button>
+
+<table id="products">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+(function() {
+    function callInventory() {
+        // TODO: Create an ajax GET request for /data/inventory.json
+        var inventory = $.get("/data/inventory.json");
+
+        inventory.done(function(data){
+
+            // TODO: Take the data from inventory.json and append it to the products table
+            var htmlString = "";
+           
+            $(data).each(function(index,element) {
+                htmlString += "<tr>";
+                    htmlString += "<td>" + element.title + "</td>";
+                    htmlString += "<td>" + element.quantity + "</td>";
+                    htmlString += "<td>" + element.categories + "</td>";
+                    htmlString += "<td>" + element.price + "</td>";
+                htmlString += "</tr>"
+            })
+            $("#insertProducts").html(htmlString);
+        });
+    }
+
+    $(document).ready(callInventory);
+    $("#refresh-table").click(callInventory);
+
+})();
+</script>
+
+</body>
+</html>

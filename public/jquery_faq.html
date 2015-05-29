@@ -7,6 +7,9 @@
 	.invisible {
 		display:none;
 	}
+	h3 {
+		margin-bottom:0;
+	}
 	</style>
 </head>
 <body>
@@ -58,16 +61,16 @@
 
 	<script src="/js/jquery-2.1.4.min.js"></script>
 	<script>
-		$("dt").click(function(e) {
-			$(this).next().toggle();
+		$("dt").click(function() {
+			$(this).next().slideToggle(400);
 		});
 
-		$("ul").each(function(index) {
+		$("ul").each(function() {
 			$(this).children("li").first().css("font-weight","bold");
 		});
 
-		$("li").click(function(e) {
-			$(this).parent().addClass("invisible");
+		$("h3").click(function() {
+			$(this).next().slideToggle(500);
 		});
 
 	</script>
