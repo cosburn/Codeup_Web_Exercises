@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather</title>
+	<link rel="stylesheet" href="/css/weather.css">
+</head>
+<body>
+	<div id="weather-app">
+		<h1>Weather</h1>
+		<form id="search-form">
+			<p>
+				<input id="searchFld" name="searchFld" type="text">
+				<button id="searchBtn" type="submit">Search</button>
+			</p>
+		</form>
+		<h2 id="location"></h2>	
+		<div id="days"></div>
+	</div>
+
+
+	<script src="/js/jquery-2.1.4.min.js"></script>
+	<script>
+	var htmlString = "";
+	var cityName = "Houston";
+
+	$("#search-form").submit(function(e) {
+		e.preventDefault();
+		cityName = $("#searchFld").val();
+		console.log(cityName);
+		getForecast();
+	});
+
+	var getForecast = function() {
+			var weatherData = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+			APPID:    "fc385f853620dad12f381b4ee5ebd274",
+			q:        cityName, 
+			units:    "imperial"
+		});
+
+		weatherData.done(function(data){
+			htmlString = "";
+			console.log(data);
+			$("#location").text(data.city.name + ", " + data.city.country);
+			for (var i=0;i<3;i++) {
+				htmlString += "<div class='day'>";
+					htmlString += "<h2>" + Math.floor(data.list[i].temp.max) + "/" + Math.floor(data.list[i].temp.min) + "</h2>";
+					htmlString += "<img src=http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png>"
+					htmlString += "<p><span class='bold'>" + data.list[i].weather[0].main + ": </span>" + data.list[i].weather[0].description + "</p>";
+					htmlString += "<p><span class='bold'>Humidity: </span>" + data.list[i].humidity + "</p>";
+					htmlString += "<p><span class='bold'>Wind: </span>" + data.list[i].speed + "</p>";
+					htmlString += "<p><span class='bold'>Pressue: </span>" + data.list[i].pressure + "</p>";
+				htmlString += "</div>";
+			}
+			$("#days").html(htmlString);
+		});
+		weatherData.fail(function(data){
+			console.log("failed");
+		});
+	}
+
+	$(document).ready(getForecast);
+
+	
+
+	</script>
+
+</body>
+</html>
