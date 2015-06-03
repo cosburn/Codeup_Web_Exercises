@@ -15,55 +15,82 @@
 		</form>
 		<h2 id="location"></h2>	
 		<div id="days"></div>
-
-		<div id="map-canvas"></div>
 	</div>
-	
+	<div id="map-canvas"></div>
 
 
 	<script src="/js/jquery-2.1.4.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
-	<script>
+	<script src="https://maps.googleapis.com/maps/api/js?libraries=drawing&amp;key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
+	<!-- // <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=drawing"></script> -->
+	<script type = "text/javascript">
 	var htmlString = "";
 	var cityName = "Houston";
+	var lat = 31.4;
+	var lon = -98.46;
+
 	//new instance of geocoder
-	// var geocoder = new google.maps.Geocoder();
+	var geocoder = new google.maps.Geocoder();
 
-	// var handleGeocode = function(results,status) {
-	// 	if (status == google.maps.GeocoderStatus.OK) {
-	// 		console.log(this);
-
-	// 	}
-	// }
-	//set the way the map loads
-	var mapOptions = {
-		zoom: 13,
-		center: {
-			lat: 29.4, 
-			lng: -98.465652799999
+	var handleGeocode = function(results,status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			console.log("Location: " + results[0].geometry.location);
+			lat = results[0].geometry.location.A;
+			lon = results[0].geometry.location.F;
+			getForecast();
 		}
 	}
+
+	var drawingManager = new google.maps.drawing.DrawingManager({
+		drawingMode: google.maps.drawing.OverlayType.MARKER,
+    	drawingControl: true,
+    	drawingControlOptions: {
+     		position: google.maps.ControlPosition.TOP_CENTER,
+      		drawingModes: [
+	        	google.maps.drawing.OverlayType.MARKER
+        	]
+        }
+	});
 	//create the map
-	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	function createMap(lat,lon) {
+		var map = new google.maps.Map(document.getElementById("map-canvas"), {
+			zoom: 10,
+			center: {
+				lat: lat, 
+				lng: lon
+			}
+		});
+		drawingManager.setMap(map);
+	}
+	google.maps.event.addListener(drawingManager, 'markercomplete', function(MARKER) {
+		console.log(MARKER.position);
+		lat = MARKER.position.A;
+		lon = MARKER.position.F;
+		var latLng = new google.maps.LatLng(lat,lon);
+		geocoder.geocode({"location":latLng},handleGeocode);
+	});
 
 	$("#search-form").submit(function(e) {
 		e.preventDefault();
 		cityName = $("#searchFld").val();
 		console.log(cityName);
-		getForecast();
+		geocoder.geocode({"address":cityName},handleGeocode);
 	});
 
 	var getForecast = function() {
+		console.log("loading...");
 		var weatherData = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
 			APPID:    "fc385f853620dad12f381b4ee5ebd274",
-			q:        cityName, 
-			units:    "imperial"
+			// q:        cityName, 
+			lat:      lat,
+			lon:      lon,
+			units:    "imperial",
+			cnt:      3
 		});
 
 		weatherData.done(function(data){
 			htmlString = "";
 			console.log(data);
-			$("#location").text(data.city.name + ", " + data.city.country);
+			$("#location").text(data.city.name);
 			for (var i=0;i<3;i++) {
 				htmlString += "<div class='day'>";
 					htmlString += "<img src=http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png>";
@@ -75,13 +102,19 @@
 				htmlString += "</div>";
 			}
 			$("#days").html(htmlString);
+			lat = data.city.coord.lat;
+			lon = data.city.coord.lon;
+			createMap(lat,lon);
 		});
 		weatherData.fail(function(data){
 			console.log("failed");
 		});
 	}
 
-	$(document).ready(getForecast);
+	$(document).ready(function() { 
+		getForecast();
+		createMap();
+	});
 
 	
 
