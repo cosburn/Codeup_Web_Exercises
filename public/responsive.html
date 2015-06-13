@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Responsive Design</title>
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/box_sizing.css">
+	<link rel="stylesheet" href="/css/responsive.css">
+	<link rel="stylesheet" href="/css/grid.css">
+
+	<meta name="viewpoirt" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+	<header>
+		<h1>Responsive Design</h1>
+		<h2>"Device-agnostic design for the web."</h2>
+	</header>
+	<section>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</section>
+	
+	<script>
+		var boxes = document.getElementsByTagName("div");
+		var r = 10;
+		var g = 100;
+		var b = 50;
+		for (i=0;i<5;i++) {
+			boxes[i].style.background = "rgb(" + r + ", " + g + ", " + b + ")";
+			console.log(boxes[i].style.border);
+			r += 50;
+			g -= 10;
+			b +=50;
+		}
+	</script>
+</body>
+</html>

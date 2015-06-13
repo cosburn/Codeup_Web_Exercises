@@ -1,0 +1,24 @@
+header,
+section {
+	width: 90%;
+	max-width: 900px;
+	margin: 0 auto;
+}
+div {
+	width: 80%;
+	height: 50px;
+	margin: 3px auto;
+	float: left;
+}
+@media screen and (min-width: 550px) {
+	div {
+		width: 30%;
+		margin: 5px;
+	}
+}
+@media screen and (min-width: 800px) {
+	div {
+		width: 25%;
+		margin: 10px;
+	}
+}
