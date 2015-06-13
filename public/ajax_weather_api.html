@@ -23,12 +23,14 @@
 
 	<script src="/js/jquery-2.1.4.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=drawing&amp;key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
-	<!-- // <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=drawing"></script> -->
+	<script type = "text/javascript" src="/js/moment.js"></script>
 	<script type = "text/javascript">
+	
+	"use strict";
 	var htmlString = "";
-	var cityName = "Houston";
-	var lat = 31.4;
-	var lon = -98.46;
+	var cityName = "Cannon Beach, OR";
+	var lat = 45.8892;
+	var lon = -123.9608;
 
 	//new instance of geocoder
 	var geocoder = new google.maps.Geocoder();
@@ -95,8 +97,10 @@
 			$("#location").text(data.city.name);
 			for (var i=0;i<3;i++) {
 				htmlString += "<div class='day'>";
+					console.log("list index "+i+" is "+data.list[i].dt);
+					htmlString += "<h4>" + moment.unix(data.list[i].dt).format("dddd") + "<h4>";
 					htmlString += "<img src=http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png>";
-					htmlString += "<h2>" + Math.floor(data.list[i].temp.max) + "/" + Math.floor(data.list[i].temp.min) + "</h2>";
+					htmlString += "<h3>" + Math.floor(data.list[i].temp.max) + "/" + Math.floor(data.list[i].temp.min) + "</h3>";
 					htmlString += "<p><span class='bold'>" + data.list[i].weather[0].main + ": </span>" + data.list[i].weather[0].description + "</p>";
 					htmlString += "<p><span class='bold'>Humidity: </span>" + data.list[i].humidity + "</p>";
 					htmlString += "<p><span class='bold'>Wind: </span>" + data.list[i].speed + "</p>";

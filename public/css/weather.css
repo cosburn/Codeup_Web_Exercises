@@ -6,11 +6,11 @@ body {
 	/*border:1px solid black;*/
 	padding: 10px;
 	margin: 0 auto;
-	width: 50%;
+	width: 100%;
 	max-width: 500px;
 	text-align: center;
 	position: relative;
-	float:left;
+	/*float:left;*/
 }
 .day {
 	width: 30%;
@@ -31,8 +31,9 @@ body {
 	font-weight: bold;
 }
 #map-canvas {
-	width: 50%;
-	height: 400px;
+	width: 100%;
+	max-width: 500px;
+	height: 350px;
 	margin: 0 auto;
 	z-index: 0;
 	/*position: absolute;*/
