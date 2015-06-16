@@ -25,5 +25,4 @@ echo "Subtraction: 4 - 5 = " . subtract(4,5) . PHP_EOL;
 echo "Multiplication: 4 * 5 = " . multiply(4,5) . PHP_EOL;
 echo "Division: 4 / 5 = " . divide(4,5) . PHP_EOL;
 
-
 ?>
