@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="controllerTest">
+<head>
+	<title>Shopping Cart</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/grid.css">
+	<style type="text/css">
+		[ng-cloak] {
+			display: none !important;
+		}
+	</style>
+</head>
+<body ng-controller="CartController as ctrl">
+	<h1>Store</h1>
+	<div class="row">
+		<div class="item column one-sixth" ng-repeat="item in ctrl.store">
+			<img src="{{ item.icon }}">
+			<p class="name">{{ item.name }}</p>
+			<p class="price">{{ item.price }}</p>
+			<button ng-click="ctrl.addItem(item)">Add to Cart</button>
+		</div>
+	</div>
+
+	<h2>Your Cart:</h2>
+	<div id="cart" ng-repeat="item in ctrl.cart" ng-if="ctrl.cart">
+		<div class="row">
+			<div class="column one-third">
+				<img src="{{ item.icon }}">
+			</div>
+			<div class="column one-third">
+				<p class="name">{{ item.name }}</p>
+				<p class="price">{{ item.price }}</p>
+			</div>
+			<div class="column one-sixth">
+				<p>{{ item.qty }}</p>
+			</div>
+			<div class="column one-sixth">
+				<button class="remove" ng-click="ctrl.removeItem($index)">X</button>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/js/angular.min.js"></script>
+	<script type="text/javascript" src="/js/controllerTest.js"></script>
+
+</body>
+</html>
