@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html ng-app="modelTest">
+<head>
+	<title>Business Card Designer</title>
+	<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/css/grid.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome-4.3.0/css/font-awesome.css">
+	<style type="text/css">
+		[ng-cloak] {
+			display: none !important;
+		}
+		.card {
+			width: 400px;
+			height: 200px;
+			background-color: #fafafa;
+			border: 1px solid #f9f9f9;
+			border-radius: 5px;
+			box-shadow: 0px 0px 3px #ddd;
+			padding: 20px;
+			margin: 0 auto;
+			margin-top: 20px;
+			overflow: hidden;
+			background-image: url("img/white_wall_hash.png");
+		}
+		.card img {
+			float: left;
+			clear: both;
+			margin-right: 15px;
+			margin-bottom: 15px;
+			width: 100px;
+			border-radius: 3px;
+		}
+		.card h3 {
+			margin-top: 0;
+		}
+		.input-fields {
+			width: 400px;
+			padding: 10px;
+			margin: 0 auto;
+		}
+		.input-fields input {
+			margin-top: 10px;
+			margin-right: 10px;
+			width: 46%;
+			clear: both;
+			font-size: 14px;
+		}
+		.center {
+			margin: 0 auto;
+			text-align: center;
+		}
+		.block {
+			display: block;
+		}
+		.personal-info p {
+			font-size: 12px;
+			line-height: 10px;
+		}
+		.contact-info {
+			clear: both;
+		}
+		.contact-info p {
+			display: inline;
+			margin-right: 20px;
+			font-size: 12px;
+		}
+		.ng-touched.ng-invalid {
+			border: 1px solid red;
+		}
+		.ng-touched.ng-valid {
+			box-shadow: 0px 0px 3px #008000;
+		}
+		.column {
+			padding: 0px;
+		}
+	</style>
+</head>
+<body>
+	<!-- <h1>Design Your Own Business Card!</h1> -->
+	<div id="card" class="card">
+		<div id="personal-info" class="personal-info">
+			<img src="{{ user.icon }}">
+			<h3>{{ user.name }}</h3>
+			<p>{{ user.title }}</p>
+			<p>{{ user.company }}</p>
+			<p>{{ user.address }}</p>
+		</div>
+		<div id="contact-info" class="contact-info">
+			<div class="row">
+				<div class="column one-half">
+					<p><i class="fa fa-phone"></i> {{ user.phone }}</p>
+				</div>
+				<div class="column one-half">
+					<p><i class="fa fa-envelope-o"></i> {{ user.email }}</p>
+				</div>
+				<div class="column one-half">
+					<p><i class="fa fa-github-alt"></i> {{ user.github }}</p>
+				</div>
+				<div class="column one-half">	
+					<p><i class="fa fa-twitter"></i> @{{ user.twitter }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<form novalidate>
+		<div id="input-fields" class="input-fields">
+			<input type="text" name="name" ng-model="user.name" placeholder="Your Name">
+			<input type="text" name="title" ng-model="user.title" placeholder="Title">
+			<input type="text" name="company" ng-model="user.company" placeholder="Company">
+			<input type="text" name="address" ng-model="user.address" placeholder="Company Address">
+			<input type="text" ng-minlength="9" ng-maxlength="16" name="phone" ng-model="user.phone" placeholder="Phone Number">
+			<input type="email" name="email" ng-model="user.email" placeholder="Email">
+			<input type="text" name="github" ng-model="user.github" placeholder="Github URL">
+			<input type="text" name="twitter" ng-model="user.twitter" placeholder="Twitter Handle">
+			<p>Choose your avatar:</p>
+			<select id="icons" name="images" ng-model="user.icon">
+				<option value="/img/face1.png">Happy</option>
+				<option value="/img/face2.png">Confused</option>
+				<option value="/img/face3.png">Totally Freaked</option>
+				<option value="/img/face4.png">Whaa?</option>
+			</select>
+			<p>Background Texture:</p>
+			<select id="backgrounds" name="backgrounds" ng-model="user.background">
+				<option value="url(img/patterns/white_wall_hash.png)">Default</option>
+				<option value="url(img/patterns/congruent_pentagon.png)">Geometric</option>
+				<option value="url(img/patterns/dark_embroidery.png)">Dark Embroider</option>
+				<option value="url(img/patterns/knitting250px.png)">Knit</option>
+				<option value="url(img/patterns/pixel_weave.png)">Weave</option>
+				<option value="url(img/patterns/restaurant.png)">Colorful Food</option>
+				<option value="url(img/patterns/shattered.png)">Shattered</option>
+				<option value="url(img/patterns/swirl.png)">Swirl</option>
+				<option value="url(img/patterns/symphony.png)">Paisley</option>
+				<option value="url(img/patterns/tweed.png)">Tweed</option>
+			</select>
+			<p>Text Color:</p>
+			<select id="colors" name="font-colors" ng-model="user.color">
+				<option value="#fff">White</option>
+				<option value="#000">Black</option>
+				<option value="#777">Grey</option>
+			</select>
+		</div>
+	</form>
+
+	<script type="text/javascript" src="/js/angular.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/js/model_test.js"></script>
+	<script type="text/javascript">
+		"use strict";
+		$('#backgrounds').change(function() {
+			var background = $(this).children(':selected').attr("value");
+			$('#card').css('background', background);
+		});
+		$('#colors').change(function() {
+			var color = $(this).children(':selected').attr("value");
+			$('#card').css('color', color);
+		});
+
+	</script>
+</body>
+</html>
