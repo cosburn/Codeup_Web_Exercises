@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="angularBlog">
+<head>
+	<title>Angular Blog</title>
+</head>
+<body ng-controller="BlogController">
+	<form name="add-post">
+		<input type="text" ng-model="title"></input>
+		<input type="text" ng-model="date"></input>
+		<div>
+			<textarea ng-model="content"></textarea>
+		</div>
+		<button ng-click="addPost(title,date,content)">Add</button>
+	</form>
+	<div ng-repeat="post in posts">
+		<h2>{{ post.title }}</h2>
+		<p>{{ post.date }}</p>
+		<p>{{ post.content }}</p>
+		<button ng-click="addComment($index)">Comment</button>
+		<div ng-if="post.comments" ng-repeat="comment in post.comments">
+			<p class="comment"><em>{{comment}}</em></p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angularBlog.js"></script>
+	<!--<script type="text/javascript" src="js/blogComment.js"></script>-->
+</body>
+</html>
