@@ -4,6 +4,7 @@
 	<title>Shopping Cart</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/grid.css">
+	<link rel="stylesheet" type="text/css" href="css/controller_test.css">
 	<style type="text/css">
 		[ng-cloak] {
 			display: none !important;
@@ -11,33 +12,44 @@
 	</style>
 </head>
 <body ng-controller="CartController as ctrl">
-	<h1>Store</h1>
-	<div class="row">
+	<h1 class="center line-below title">Store</h1>
+	<div class="row store">
 		<div class="item column one-sixth" ng-repeat="item in ctrl.store">
 			<img src="{{ item.icon }}">
 			<p class="name">{{ item.name }}</p>
-			<p class="price">{{ item.price }}</p>
+			<p class="price">{{ item.price | currency }}</p>
 			<button ng-click="ctrl.addItem(item)">Add to Cart</button>
 		</div>
 	</div>
 
 	<h2>Your Cart:</h2>
 	<div id="cart" ng-repeat="item in ctrl.cart" ng-if="ctrl.cart">
-		<div class="row">
-			<div class="column one-third">
+		<div class="row cart">
+			<div class="column one-sixth">
 				<img src="{{ item.icon }}">
 			</div>
-			<div class="column one-third">
+			<div class="column one-sixth">
 				<p class="name">{{ item.name }}</p>
 				<p class="price">{{ item.price }}</p>
 			</div>
-			<div class="column one-sixth">
-				<p>{{ item.qty }}</p>
+			<div class="column one-eighth">
+				<p class="label">Qty</p>
+				<input class="form-small" type="number" ng-min="0" ng-model="item.qty"></input>
 			</div>
-			<div class="column one-sixth">
+			<div class="column one-eighth">
+				<p class="label">Total</p>
+				<p>{{ (item.qty * item.price) | currency }}</p>
+			</div>
+			<div class="column one-eighth">
 				<button class="remove" ng-click="ctrl.removeItem($index)">X</button>
 			</div>
 		</div>
+	</div>
+	<div class="sidebar" id="sidebar">
+		<p>Subtotal: {{ ctrl.getSubtotal() | currency }}</p>
+		<p>Tax: {{ ctrl.getSubtotal() * .08125 | currency }}</p>
+		<p>Shipping: {{ ctrl.cart.length * 1.25 | currency }}</p>
+		<p>Total: {{ ctrl.getSubtotal() + (ctrl.getSubtotal() * .08125) + (ctrl.cart.length * 1.25) | currency }}</p>
 	</div>
 
 	<script type="text/javascript" src="/js/angular.min.js"></script>
