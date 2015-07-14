@@ -1,0 +1,183 @@
+[{
+	"name": "Vegeria",
+	"address": "8407 Broadway St, San Antonio, TX 78209",
+	"phone": "(210) 826-4223",
+	"menu": "www.myvegeria.com",
+	"reviews": [
+		{
+			"name":"claireo",
+			"vegfriendliness": 5,
+			"deliciousness": 4,
+			"vegan-options": 5,
+			"flexible": 4,
+			"meat": false,
+			"food": [
+				"American"
+			],
+			"occasion": [
+				"lunch",
+				"dinner",
+				"date"
+			],
+			"fancy": 1,
+			"price": "$",
+			"thoughts": "This restaurant is my fave!"
+		},{
+			"name":"benji",
+			"vegfriendliness": 5,
+			"deliciousness": 2,
+			"vegan-option": 5,
+			"flexible": 5,
+			"meat": false,
+			"food": [
+				"American"
+			],
+			"occasion": [
+				"lunch",
+				"dinner"
+			],
+			"fancy": 1,
+			"price": "$$",
+			"thoughts": "I love this place!"
+		},{
+			"name":"stevebob",
+			"vegfriendliness": 4,
+			"deliciousness": 4,
+			"vegan-option": 5,
+			"flexible": 1,
+			"meat": false,
+			"food": [
+				"American"
+			],
+			"occasion": [
+				"lunch",
+				"dinner",
+				"date"
+			],
+			"fancy": 1,
+			"price": "$$$",
+			"thoughts": "I hate eating."
+		}
+	]
+},{
+	"name": "Green Vegetarian Cuisine",
+	"address": "200 E Grayson St #200, San Antonio, TX 78215",
+	"phone": "(210) 320-5865",
+	"menu": "https://locu.com/places/green-vegetarian-cuisine-at-the-pearl-san-antonio-us/#menu",
+	"reviews": [
+		{
+			"name":"claireo",
+			"vegfriendliness": 5,
+			"deliciousness": 3,
+			"vegan-options": 5,
+			"flexible": 4,
+			"meat": false,
+			"food": [
+				"American"
+			],
+			"occasion": [
+				"lunch",
+				"dinner"
+			],
+			"fancy": 2,
+			"price": "$",
+			"thoughts": "This restaurant is my fave!"
+		},{
+			"name":"benji",
+			"vegfriendliness": 5,
+			"deliciousness": 2,
+			"vegan-option": 5,
+			"meat": false,
+			"flexible": 5,
+			"food": [
+				"American"
+			],
+			"occasion": [
+				"lunch",
+				"dinner"
+			],
+			"fancy": 1,
+			"price": "$$",
+			"thoughts": "I hate eating."
+		},{
+			"name":"stevebob",
+			"vegfriendliness": 5,
+			"deliciousness": 1,
+			"vegan-option": 5,
+			"flexible": 5,
+			"meat": false,
+			"food": [
+				"American"
+			],
+			"occasion": [
+				"lunch",
+				"dinner",
+				"date"
+			],
+			"fancy": 1,
+			"price": "$",
+			"thoughts": "All the food is green! It's so weird! Just kidding."
+		}
+	]
+},{
+	"name": "Thai Dee",
+	"address": "5307 Blanco Rd, San Antonio, TX 78216",
+	"phone": "(210) 342-3622",
+	"menu": "https://locu.com/places/thai-dee-restaurant-san-antonio-us/#menu",
+	"reviews": [
+		{
+			"name":"claireo",
+			"vegfriendliness": 4,
+			"deliciousness": 5,
+			"vegan-options": 2,
+			"flexible": 2,
+			"meat": true,
+			"food": [
+				"Thai"
+			],
+			"occasion": [
+				"lunch",
+				"dinner",
+				"date"
+			],
+			"fancy": 2,
+			"price": "$",
+			"thoughts": "BYOB! Watch out for the duck sauce, just ask."
+		},{
+			"name":"benji",
+			"vegfriendliness": 3,
+			"deliciousness": 4,
+			"vegan-option": 1,
+			"flexible": 3,
+			"meat": true,
+			"food": [
+				"Thai"
+			],
+			"occasion": [
+				"lunch",
+				"dinner"
+			],
+			"fancy": 2,
+			"price": "$$",
+			"thoughts": "Egg rolls are my fave."
+		},{
+			"name":"stevebob",
+			"vegfriendliness": 5,
+			"deliciousness": 5,
+			"vegan-option": 3,
+			"flexible": 4,
+			"meat": true,
+			"food": [
+				"Thai"
+			],
+			"occasion": [
+				"lunch",
+				"dinner",
+				"date"
+			],
+			"fancy": 3,
+			"price": "$$",
+			"thoughts": "Thai Dee is a dee-light! LOL"
+		}
+	]
+}]

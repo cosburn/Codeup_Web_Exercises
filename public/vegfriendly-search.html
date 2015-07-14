@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VegFriendly</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/box-sizing.css">
+	<link rel="stylesheet" type="text/css" href="css/grid.css">
+	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
+</head>
+<body>
+	<div class="content-wrapper">
+	<header>
+		<nav>
+			<ul>
+				<li><a>About</a></li>
+				<li><a>Contact</a></li>
+			</ul>
+		</nav>
+		<!-- <img src="http://placehold.it/200x100" /> -->
+		<h1><a href="vegfriendly.html">VegFriendly</a></h1>
+		<h4 class="subtitle">Where vegetarians and friends can find a place to eat. </h4>
+		
+	</header>
+	<main>
+		<h2>Search:</h2>
+		<!-- filtering options -->
+		<p>Price: [dropdown: low to high, etc.]</p>
+		<div class="row">
+			<div class="column one-half">
+			<p>Food:</p>
+				<ul class="review-checkboxes">
+					<li><input type="checkbox" name="vietnamese" value="vietnamese">Vietnamese</li>
+					<li><input type="checkbox" name="american" value="american">American</li>
+					<li><input type="checkbox" name="thai" value="thai">Thai</li>
+				</ul>
+			</div>
+			<div class="column one-half">
+				<p>Occasion</p>
+				<ul class="review-checkboxes">
+					<li><input type="checkbox" name="lunch" value="lunch">Lunch</li>
+					<li><input type="checkbox" name="big-group" value="big-group">Big Group</li>
+					<li><input type="checkbox" name="date" value="date">Date</li>
+				</ul>
+			</div>
+			<p><input type="checkbox">Also good for meat-eating friends<p>
+		</div>
+		
+		<div id="search-results">
+
+			<!-- results of search display here -->
+
+		</div>
+		
+	</main>
+	<footer>
+		<p>Copyright: Claire Osburn, 2015</p>
+	</footer>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script type="text/javascript">
+(function() {
+    function searchRestaurants() {
+    	console.log("searching");
+       
+        var restaurants = $.get("/data/restaurants.json");
+
+        restaurants.done(function(data){
+
+            // Take data from JSON list of restaurants and reviews, populate it on the search list
+            console.log(data);
+            var htmlString = "";
+           
+            $(data).each(function(index,element) {
+            	// Create variables to hold rating and average values
+            	var vegFriendlinessAverage = 0;
+            	var deliciousnessAverage = 0;
+
+            	// Get total rated values
+            	$(element.reviews).each(function(i,review){
+            		vegFriendlinessAverage += review.vegfriendliness;
+            		deliciousnessAverage += review.deliciousness;
+            	})
+            	// Calculate average ratings
+            	vegFriendlinessAverage = Math.round((vegFriendlinessAverage / element.reviews.length));
+            	deliciousnessAverage = Math.round((deliciousnessAverage / element.reviews.length));
+
+            	// Generate html for display of results
+                htmlString += "<div class='featured-box'>";
+	                htmlString += "<img class='float-left clear thumb' src='http://placehold.it/100x100' />";
+	                htmlString += "<div>";
+	                htmlString += "<h2>" + element.name + "</h2>";
+	                htmlString += "<p>Location: " + element.address + "</p>";
+	                htmlString += "<p>Veg-friendliness: " + vegFriendlinessAverage + "</p>";
+	                htmlString += "<p>Delicioussness: " + deliciousnessAverage + "</p>";
+                htmlString += "<a href='vegfriendly-view.html'><button>View</button></a></div></div>";
+            })
+			//display results
+            $("#search-results").html(htmlString);
+        });
+		//if ajax requests fails
+        restaurants.fail(function(jqxh, status){
+        	console.log(status);
+        	console.log("failed");
+        });
+    }
+
+    $(document).ready(searchRestaurants);
+    // $("#refresh-table").click(callInventory);
+
+})();
+
+
+</script>
+
+</body>
+</html>
