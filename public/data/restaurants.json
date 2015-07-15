@@ -20,7 +20,7 @@
 				"date"
 			],
 			"fancy": 1,
-			"price": "$",
+			"price": 1,
 			"thoughts": "This restaurant is my fave!"
 		},{
 			"name":"benji",
@@ -37,7 +37,7 @@
 				"dinner"
 			],
 			"fancy": 1,
-			"price": "$$",
+			"price": 2,
 			"thoughts": "I love this place!"
 		},{
 			"name":"stevebob",
@@ -55,7 +55,7 @@
 				"date"
 			],
 			"fancy": 1,
-			"price": "$$$",
+			"price": 3,
 			"thoughts": "I hate eating."
 		}
 	]
@@ -80,7 +80,7 @@
 				"dinner"
 			],
 			"fancy": 2,
-			"price": "$",
+			"price": 1,
 			"thoughts": "This restaurant is my fave!"
 		},{
 			"name":"benji",
@@ -97,7 +97,7 @@
 				"dinner"
 			],
 			"fancy": 1,
-			"price": "$$",
+			"price": 2,
 			"thoughts": "I hate eating."
 		},{
 			"name":"stevebob",
@@ -115,7 +115,7 @@
 				"date"
 			],
 			"fancy": 1,
-			"price": "$",
+			"price": 1,
 			"thoughts": "All the food is green! It's so weird! Just kidding."
 		}
 	]
@@ -141,7 +141,7 @@
 				"date"
 			],
 			"fancy": 2,
-			"price": "$",
+			"price": 1,
 			"thoughts": "BYOB! Watch out for the duck sauce, just ask."
 		},{
 			"name":"benji",
@@ -158,7 +158,7 @@
 				"dinner"
 			],
 			"fancy": 2,
-			"price": "$$",
+			"price": 2,
 			"thoughts": "Egg rolls are my fave."
 		},{
 			"name":"stevebob",
@@ -176,7 +176,7 @@
 				"date"
 			],
 			"fancy": 3,
-			"price": "$$",
+			"price": 2,
 			"thoughts": "Thai Dee is a dee-light! LOL"
 		}
 	]
