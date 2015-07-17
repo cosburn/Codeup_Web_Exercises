@@ -8,7 +8,7 @@
 			"name":"claireo",
 			"vegfriendliness": 5,
 			"deliciousness": 4,
-			"vegan-options": 5,
+			"vegan-option": true,
 			"flexible": 4,
 			"meat": false,
 			"food": [
@@ -26,7 +26,7 @@
 			"name":"benji",
 			"vegfriendliness": 5,
 			"deliciousness": 2,
-			"vegan-option": 5,
+			"vegan-option": true,
 			"flexible": 5,
 			"meat": false,
 			"food": [
@@ -43,7 +43,7 @@
 			"name":"stevebob",
 			"vegfriendliness": 4,
 			"deliciousness": 4,
-			"vegan-option": 5,
+			"vegan-option": false,
 			"flexible": 1,
 			"meat": false,
 			"food": [
@@ -69,7 +69,7 @@
 			"name":"claireo",
 			"vegfriendliness": 5,
 			"deliciousness": 3,
-			"vegan-options": 5,
+			"vegan-option": true,
 			"flexible": 4,
 			"meat": false,
 			"food": [
@@ -86,7 +86,7 @@
 			"name":"benji",
 			"vegfriendliness": 5,
 			"deliciousness": 2,
-			"vegan-option": 5,
+			"vegan-option": false,
 			"meat": false,
 			"flexible": 5,
 			"food": [
@@ -103,7 +103,7 @@
 			"name":"stevebob",
 			"vegfriendliness": 5,
 			"deliciousness": 1,
-			"vegan-option": 5,
+			"vegan-option": false,
 			"flexible": 5,
 			"meat": false,
 			"food": [
@@ -129,7 +129,7 @@
 			"name":"claireo",
 			"vegfriendliness": 4,
 			"deliciousness": 5,
-			"vegan-options": 2,
+			"vegan-option": false,
 			"flexible": 2,
 			"meat": true,
 			"food": [
@@ -147,7 +147,7 @@
 			"name":"benji",
 			"vegfriendliness": 3,
 			"deliciousness": 4,
-			"vegan-option": 1,
+			"vegan-option": false,
 			"flexible": 3,
 			"meat": true,
 			"food": [
@@ -164,7 +164,7 @@
 			"name":"stevebob",
 			"vegfriendliness": 5,
 			"deliciousness": 5,
-			"vegan-option": 3,
+			"vegan-option": false,
 			"flexible": 4,
 			"meat": true,
 			"food": [
