@@ -25,7 +25,7 @@ html {
 .column {
 	width: 100%;
 	float: left;
-	padding: 10px;
+	/*padding: 10px;*/
 }
 
 .column.one-half {
@@ -42,11 +42,12 @@ html {
 .column.one-fourth {
 	width: 25%;
 }
-
+.column.three-fourth {
+	width: 75%;
+}
 .column.one-sixth {
 	width: 16.6%;
 }
-
 .column.one-eighth {
 	width: 12.5%;
 }

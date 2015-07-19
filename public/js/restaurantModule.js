@@ -3,19 +3,19 @@
 (function() {
     var app = angular.module("restaurantModule", []);
 
-    app.controller("RestaurantController", ['$scope', function($scope, $http) {
+    app.controller("RestaurantController", ['$scope', '$http', function($scope, $http) {
 	   //loads data into array
 	   //managages rating calculations for display
 
 
 	   // Create variable to hold rating and average values
-    	this.restaurants = [];
+    	$scope.restaurants = [];
     	var that = this;
 
     	// get data
         var getRestaurants = $http.get("data/restaurants.json").
         	success(function(data, status, headers, config) {
-        		that.restaurants = data;
+        		$scope.restaurants = data;
         	}).
         	error(function(data, status, headers, config){
         		console.log(status);
@@ -46,31 +46,113 @@
 	    	return percentYes;
 	    };
 	    // create new array to put all the things that fit the categories checked
-	    this.foodIncludes = [];
-	    this.occasionIncludes = [];
+	    $scope.foodIncludes = [];
+	    // this.occasionIncludes = [];
 
-	    // add category to this.categoryIncludes when that box is checked
+	    // Next two functions:
+	    // add [category] to this.[category]Includes when that box is checked
 	    this.includeFood = function(food) {
-	    	//iterate through restaurants.reviews["food"]
-	    	//if the item in the array matches input food parameter, push it to this.foodIncludes
+	    	//iterate through restaurants to check food types
+	    	var i = $.inArray(food, $scope.foodIncludes);
+	    	if (i > -1) {
+	    		//if the food is already included, remove it (unchecked)
+	    		$scope.foodIncludes.splice(i,1);
+	    	} else {
+	    		//if not included, add it (checked)
+	    		$scope.foodIncludes.push(food);
+	    	};
 	    };
-	    this.includeOccasion = function(occasion) {
-	    	//iterate through restaurants.reviews["occasion"]
-	    	//if the item in the array matches input occasion parameter, push it to this.occasionIncludes
-	    };
+	    // this.includeOccasion = function(occasion) {
+	    // 	//iterate through restaurants.reviews["occasion"]
+	    // 	//if the item in the array matches input occasion parameter, push it to this.occasionIncludes
+	    // };
 
 	    // filter by food
-	    this.foodFilter = function() {
-	    	if (this.foodIncludes.length > 0 ) {
-	    		
+	    this.foodFilter = function(restaurants) {
+	    	console.log("array = " + $scope.foodIncludes);
+	    	if ($scope.foodIncludes.length > 0 ) {
+	    		if ($.inArray(restaurants["food"], $scope.foodIncludes) < 0) {
+	    			console.log('filtering by ' + restaurants["food"]);
+	    			return;
+	    		};
 	    	};
-	    };
-	    // filter by occasion
-	    this.occasionFilter = function() {
-	    	if (this.occasionIncludes.length > 0 ) {
-	    		
-	    	};
+	    	return restaurants;
 	    };
 
+	    // filter by occasion
+	    // this.occasionFilter = function() {
+	    // 	if (this.occasionIncludes.length > 0 ) {
+	    		
+	    // 	};
+	    // };
+
+	    //new instance of the Geocode() object
+		var geocoder = new google.maps.Geocoder();
+
+		//after window loads, initialize google map
+		this.initMap = function(restaurant) {
+			
+			geocoder.geocode( {"address":restaurant['address']}, function(results,status) {
+				console.log(restaurant);
+				//check for a successful result
+				if (status == google.maps.GeocoderStatus.OK) {
+					
+					console.log(results[0].geometry.location);
+
+					//set map options
+					var mapOptions = {
+						zoom: 12,
+						center: {
+							lat: results[0].geometry.location.A, 
+							lng: results[0].geometry.location.F
+						}
+					}
+
+					var map = new google.maps.Map(document.getElementById("map-container"), mapOptions);
+					map.setCenter(results[0].geometry.location)
+
+					//create marker
+					var marker = new google.maps.Marker({
+						position: results[0].geometry.location,
+						map: map,
+						animation: google.maps.Animation.DROP,
+					});	
+
+					
+				} else {
+					alert("Geocoding was not successful. Status: " + status);
+				}
+			});
+		};
+
+
+		// REVIEW CONTROL FUNCTIONS ========================================================
+
+		this.addNew = function() {
+			//object to hold new review
+			that.newReview = {
+				"name":             "",
+				"vegfriendliness":  0,
+				"deliciousness":    0
+			};
+		};
+		
+    }]);
+
+    // app.controller("MapController", ["RestaurantController",'$scope', '$http', function($scope, $http) {
+    // 	//loads map with location of restaurant for single restaurant view
+    // }]);
+	
+    //filter restaurants by name
+    app.filter('nameOfRestaurant', function() {
+       	return function(restaurants, name) {
+    		var filtered = [];
+    		restaurants.forEach(function(restaurant) {
+    			if (restaurant['name'] == "Vegeria") {
+    				filtered.push(restaurant);
+    			};
+    		});
+    		return filtered;
+    	};
     });    
 })();

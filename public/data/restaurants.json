@@ -3,6 +3,7 @@
 	"address": "8407 Broadway St, San Antonio, TX 78209",
 	"phone": "(210) 826-4223",
 	"menu": "www.myvegeria.com",
+	"food": "american",
 	"reviews": [
 		{
 			"name":"claireo",
@@ -11,9 +12,6 @@
 			"vegan-option": true,
 			"flexible": 4,
 			"meat": false,
-			"food": [
-				"American"
-			],
 			"occasion": [
 				"lunch",
 				"dinner",
@@ -29,9 +27,6 @@
 			"vegan-option": true,
 			"flexible": 5,
 			"meat": false,
-			"food": [
-				"American"
-			],
 			"occasion": [
 				"lunch",
 				"dinner"
@@ -46,9 +41,6 @@
 			"vegan-option": false,
 			"flexible": 1,
 			"meat": false,
-			"food": [
-				"American"
-			],
 			"occasion": [
 				"lunch",
 				"dinner",
@@ -64,6 +56,7 @@
 	"address": "200 E Grayson St #200, San Antonio, TX 78215",
 	"phone": "(210) 320-5865",
 	"menu": "https://locu.com/places/green-vegetarian-cuisine-at-the-pearl-san-antonio-us/#menu",
+	"food": "american",
 	"reviews": [
 		{
 			"name":"claireo",
@@ -72,9 +65,6 @@
 			"vegan-option": true,
 			"flexible": 4,
 			"meat": false,
-			"food": [
-				"American"
-			],
 			"occasion": [
 				"lunch",
 				"dinner"
@@ -89,9 +79,6 @@
 			"vegan-option": false,
 			"meat": false,
 			"flexible": 5,
-			"food": [
-				"American"
-			],
 			"occasion": [
 				"lunch",
 				"dinner"
@@ -106,9 +93,6 @@
 			"vegan-option": false,
 			"flexible": 5,
 			"meat": false,
-			"food": [
-				"American"
-			],
 			"occasion": [
 				"lunch",
 				"dinner",
@@ -124,6 +108,7 @@
 	"address": "5307 Blanco Rd, San Antonio, TX 78216",
 	"phone": "(210) 342-3622",
 	"menu": "https://locu.com/places/thai-dee-restaurant-san-antonio-us/#menu",
+	"food": "thai",
 	"reviews": [
 		{
 			"name":"claireo",
@@ -132,9 +117,6 @@
 			"vegan-option": false,
 			"flexible": 2,
 			"meat": true,
-			"food": [
-				"Thai"
-			],
 			"occasion": [
 				"lunch",
 				"dinner",
@@ -150,9 +132,6 @@
 			"vegan-option": false,
 			"flexible": 3,
 			"meat": true,
-			"food": [
-				"Thai"
-			],
 			"occasion": [
 				"lunch",
 				"dinner"
@@ -167,9 +146,6 @@
 			"vegan-option": false,
 			"flexible": 4,
 			"meat": true,
-			"food": [
-				"Thai"
-			],
 			"occasion": [
 				"lunch",
 				"dinner",

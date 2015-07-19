@@ -23,19 +23,21 @@
 		</header>
 		<main>
 			<div >
-				<h2>Search:</h2>
+				<h2 class="center-text">Search:</h2>
 				<!-- filtering options -->
-				<p>Price: [dropdown: low to high, etc.]</p>
-				<div class="row">
-					<div class="column one-half">
+				<input ng-model="query" class="center-element" type='text' placeholder="by name">
+				<h3 class="center-text subtitle">Filtering Options +</h3>
+
+				<div class="row bottom-border">
+					<div>
 						<p>Food:</p>
 						<ul class="review-checkboxes">
-							<li><input ng-click="restaurantFilter('vietnamese')" type="checkbox" name="vietnamese" value="vietnamese">Vietnamese</li>
-							<li><input ng-click="restaurantFilter('american')" name="american" value="american">American</li>
-							<li><input ng-click="restaurantFilter('thai')" name="thai" value="thai">Thai</li>
+							<li><input ng-click="restCtrl.includeFood('vietnamese')" type="checkbox" name="vietnamese" value="vietnamese">Vietnamese</li>
+							<li><input ng-click="restCtrl.includeFood('american')" type="checkbox" name="american" value="american">American</li>
+							<li><input ng-click="restCtrl.includeFood('thai')" type="checkbox" name="thai" value="thai">Thai</li>
 						</ul>
 					</div>
-					<div class="column one-half">
+					<div>
 						<p>Occasion</p>
 						<ul class="review-checkboxes">
 							<li><input type="checkbox" name="lunch" value="lunch">Lunch</li>
@@ -44,19 +46,23 @@
 						</ul>
 					</div>
 					<p><input type="checkbox">Also good for meat-eating friends<p>
-
-					<!-- <button ng-click="restCtrl.getRestaurants()">Search</button> -->
+					<p><input type="checkbox">Vegan Options<p>
 				</div>
+
 			
-				<div ng-repeat="restaurant in restCtrl.restaurants | filter:restaurantFilter" ng-if="restCtrl.restaurants">
-					<img class='float-left clear thumb' src='http://placehold.it/100x100' />
-					<div class="featured-box" >
-						<h2>{{ restaurant.name }}</h2>
-						<p>Location: {{ restaurant.address }}</p>
-						<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
-						<p>Delicioussness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
-						<p>Has Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0}}% said yes</p>
-						<a href='vegfriendly-view.html'><button>View</button></a>
+				<div ng-repeat="restaurant in restaurants | filter:restCtrl.foodFilter | filter:query | filter:query2 " ng-if="restaurants">
+					<!-- <img class='float-left clear thumb' src='http://placehold.it/100x100' /> -->
+					<div class="restaurant-card" >
+						<div class="float-right more-arrow">
+							<a href='vegfriendly-view.html'> > </a>
+						</div>
+						<div>
+							<h2>{{ restaurant.name }}</h2>
+							<p>Location: {{ restaurant.address }}</p>
+							<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
+							<p>Delicioussness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
+							<p>Has Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0}}% said yes</p>
+						</div>
 					</div>
 				</div>
 
@@ -71,6 +77,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
 	<script type="text/javascript" src="js/restaurantModule.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
 	<script type="text/javascript" src="js/searchModule.js"></script>
 
 </body>

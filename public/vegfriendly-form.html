@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="restaurantModule">
 <head>
 	<title>VegFriendly</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
 </head>
-<body>
+<body ng-controller="RestaurantController as restCtrl">
 	<div class="content-wrapper">
 	<header>
 		<!-- main navigation -->
@@ -27,13 +27,19 @@
 	<main>
 		<form>
 			<h2>Write a Review</h2>
-			<h3>Restaurant:</h3>
+			<h3>What Restaurant?
 
 			<!-- select from list of restuarants that are already in system -->
-			<p>Select: [search feature]<p>
+			
+				<select ng-model="review.restaurant" name="restaurants">
+					<option value="">Choose restaurant to review: </option>
+					<option ng-repeat="restaurant in restaurants" value="{{restaurant['name']}}">{{ restaurant['name'] }}</option>
+				</select>
+			</h3>
+			<button ng-hide="restCtrl.newReview || review.restaurant" ng-click="restCtrl.addNew()">New Restaurant</button>
 
 			<!-- input fields for if restaurant is not already in system -->
-			<div>
+			<div ng-show="restCtrl.newReview">
 				<p><label name="rest-name">Name:</label>
 				<input type="text" name="rest-name" placeholder="Restaurant Name"></p>
 
@@ -44,53 +50,53 @@
 				<input type="text" name="rest-zip" placeholder="78205"></p>
 			</div>
 			<!-- end input fields if restaurant is not already in system -->
+			<div ng-show="review.restaurant">
+				<p><label name="veg-friendliness">Veg-friendliness:</label></p>
+				1 <input type="radio" name="veg-friendliness" value="1">
+				<input type="radio" name="veg-friendliness" value="2">
+				<input type="radio" name="veg-friendliness" value="3">
+				<input type="radio" name="veg-friendliness" value="4">
+				<input type="radio" name="veg-friendliness" value="5"> 5
 
-			<p><label name="veg-friendliness">Veg-friendliness:</label></p>
-			1 <input type="radio" name="veg-friendliness" value="1">
-			<input type="radio" name="veg-friendliness" value="2">
-			<input type="radio" name="veg-friendliness" value="3">
-			<input type="radio" name="veg-friendliness" value="4">
-			<input type="radio" name="veg-friendliness" value="5"> 5
+				<p><label name="deliciousness">Deliciousness:</label></p>
+				1 <input type="radio" name="deliciousness" value="1">
+				<input type="radio" name="deliciousness" value="2">
+				<input type="radio" name="deliciousness" value="3">
+				<input type="radio" name="deliciousness" value="4">
+				<input type="radio" name="deliciousness" value="5"> 5
 
-			<p><label name="deliciousness">Deliciousness:</label></p>
-			1 <input type="radio" name="deliciousness" value="1">
-			<input type="radio" name="deliciousness" value="2">
-			<input type="radio" name="deliciousness" value="3">
-			<input type="radio" name="deliciousness" value="4">
-			<input type="radio" name="deliciousness" value="5"> 5
+				<p><label name="price">Price:</label></p>
+				$ <input type="radio" name="price" value="1">
+				<input type="radio" name="price" value="2">
+				<input type="radio" name="price" value="3"> $$$
 
-			<p><label name="price">Price:</label></p>
-			$ <input type="radio" name="price" value="1">
-			<input type="radio" name="price" value="2">
-			<input type="radio" name="price" value="3"> $$$
+				<p><label name="vegan">Vegan option(s)?</label></p>
+				Yes <input type="radio" name="vegan" value="true">
+				No <input type="radio" name="vegan" value="false">
 
-			<p><label name="vegan">Vegan option(s)?</label></p>
-			Yes <input type="radio" name="vegan" value="true">
-			No <input type="radio" name="vegan" value="false">
+				<p><label name="flexible">Flexible Menu?</label></p>
+				Yes <input type="radio" name="flexible" value="true">
+				No <input type="radio" name="flexible" value="false">
 
-			<p><label name="flexible">Flexible Menu?</label></p>
-			Yes <input type="radio" name="flexible" value="true">
-			No <input type="radio" name="flexible" value="false">
+				<p><label name="food">What kind of food?</label></p>
+				<select name="food">
+					<option value="American">American</option>
+					<option value="Vietnamese">Vietnamese</option>
+					<option value="Thai">Thai</option>
+				</select>
 
-			<p><label name="food">What kind of food?</label></p>
-			<select name="food">
-				<option value="American">American</option>
-				<option value="Vietnamese">Vietnamese</option>
-				<option value="Thai">Thai</option>
-			</select>
+				<p><label name="occasion">When's a good time to go?</label></p>
+				<ul class="review-checkboxes">
+					<li><input type="checkbox" value="Lunch">Lunch</li>
+					<li><input type="checkbox" value="Big Group">Big-Group</li>
+					<li><input type="checkbox" value="Date">Date</li>
+				</ul>
 
-			<p><label name="occasion">When's a good time to go?</label></p>
-			<ul class="review-checkboxes">
-				<li><input type="checkbox" value="Lunch">Lunch</li>
-				<li><input type="checkbox" value="Big Group">Big-Group</li>
-				<li><input type="checkbox" value="Date">Date</li>
-			</ul>
+				<p><label name="review">Your thoughts:</label></p>
+				<p><textarea></textarea></p>
 
-			<p><label name="review">Your thoughts:</label></p>
-			<p><textarea></textarea></p>
-
-			<button type="submit">Submit</button>
-
+				<button type="submit">Submit</button>
+			</div>
 		</form>
 	</main>
 
@@ -99,7 +105,11 @@
 	</footer>
 	</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+	<script type="text/javascript" src="js/restaurantModule.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
+	<script type="text/javascript" src="js/searchModule.js"></script>
 	
 </body>
 </html>

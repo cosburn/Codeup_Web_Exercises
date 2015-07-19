@@ -1,6 +1,9 @@
 .content-wrapper {
-	width: 90%;
 	max-width: 900px;
+	margin: 0 auto;
+}
+main {
+	width: 90%;
 	margin: 0 auto;
 }
 header {
@@ -32,17 +35,30 @@ footer {
 	float: left;
 	margin: 0px 10px 10px 10px;
 }
-.featured-box {
+.restaurant-card {
 	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #fafafa;
+	border-radius: 5px;
+	margin-top:10px;
+	clear: both;
 }
-.featured-box h2 {
+.restaurant-card h2 {
 	margin: 0px;
-	font-size: 15px;
+	font-size: 20px;
 }
-.featured-box p {
+.restaurant-card p {
 	font-size: 12px;
 	margin-top: 2px; 
 	margin-bottom: 2px; 
+}
+.more-arrow {
+	font-size: 40px;
+	margin-top: 20px;
+}
+.more-arrow a {
+	text-decoration: none;
+	color: #d8d6d6;
 }
 .float-right {
 	float: right;
@@ -53,8 +69,34 @@ footer {
 .clear {
 	clear: both;
 }
+.center-element {
+	display: block;
+	margin: 0 auto;
+}
+.center-text {
+	text-align: center;
+}
+.bottom-border {
+	border-bottom: 2px solid black;
+}
 textarea {
 	width: 100%;
 	height: 75px;
 	max-width: 400px;
+}
+.view-box {
+	/*border: 1px solid black;*/
+	width: 100%;
+
+}
+.map-container {
+	width: 100%;
+	height: 125px;
+	/*border: 1px solid black;*/
+}
+.prof {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 50px;
+	margin-right: 10px;
 }
