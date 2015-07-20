@@ -26,27 +26,29 @@
 				<h2 class="center-text">Search:</h2>
 				<!-- filtering options -->
 				<input ng-model="query" class="center-element" type='text' placeholder="by name">
-				<h3 class="center-text subtitle">Filtering Options +</h3>
+				<h3 id="display-options" class="center-text subtitle">Filtering Options <span id="plus">+</span></h3>
 
-				<div class="row bottom-border">
-					<div>
-						<p>Food:</p>
-						<ul class="review-checkboxes">
-							<li><input ng-click="restCtrl.includeFood('vietnamese')" type="checkbox" name="vietnamese" value="vietnamese">Vietnamese</li>
-							<li><input ng-click="restCtrl.includeFood('american')" type="checkbox" name="american" value="american">American</li>
-							<li><input ng-click="restCtrl.includeFood('thai')" type="checkbox" name="thai" value="thai">Thai</li>
-						</ul>
+				<div class="hidden" id="options">
+					<div class="row bottom-border">
+						<div>
+							<p>Food</p>
+							<ul class="review-checkboxes">
+								<li ng-repeat="food in foodTypes">
+									<input ng-click="restCtrl.includeFood(food)" type="checkbox" name="{{ food }}" value="{{ food }}">{{ food }}
+								</li>
+							</ul>
+						</div>
+						<div>
+							<p class="clear">Occasion</p>
+							<ul class="review-checkboxes">
+								<li><input type="checkbox" name="lunch" value="lunch">Lunch</li>
+								<li><input type="checkbox" name="big-group" value="big-group">Big Group</li>
+								<li><input type="checkbox" name="date" value="date">Date</li>
+							</ul>
+						</div>
+						<p><input type="checkbox">Also good for meat-eating friends<p>
+						<p><input type="checkbox">Vegan Options<p>
 					</div>
-					<div>
-						<p>Occasion</p>
-						<ul class="review-checkboxes">
-							<li><input type="checkbox" name="lunch" value="lunch">Lunch</li>
-							<li><input type="checkbox" name="big-group" value="big-group">Big Group</li>
-							<li><input type="checkbox" name="date" value="date">Date</li>
-						</ul>
-					</div>
-					<p><input type="checkbox">Also good for meat-eating friends<p>
-					<p><input type="checkbox">Vegan Options<p>
 				</div>
 
 			
@@ -79,6 +81,16 @@
 	<script type="text/javascript" src="js/restaurantModule.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
 	<script type="text/javascript" src="js/searchModule.js"></script>
+	<script type="text/javascript">
+
+		"use strict";
+
+		$("#display-options").click(function() {
+			$("#options").slideToggle(200);	
+			$("#plus").toggleText("+","-");
+		});
+
+	</script>
 
 </body>
 </html>
