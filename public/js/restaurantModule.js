@@ -4,12 +4,14 @@
     var app = angular.module("restaurantModule", []);
 
     app.controller("RestaurantController", ['$scope', '$http', function($scope, $http) {
-	   //loads data into array
-	   //managages rating calculations for display
+
+
+	   // GET RESTAURANT DATA ========================================================================
 
 
 	   // Create variable to hold rating and average values
     	$scope.restaurants = [];
+    	$scope.foodTypes = [];
     	var that = this;
 
     	// get data
@@ -22,8 +24,22 @@
 	        	console.log("request failed");
         	});
 
+        var getFoodTypes = $http.get("data/foodTypes.json").
+        	success(function(data, status, headers, config) {
+        		$scope.foodTypes = data;
+        	}).
+        	error(function(data, status, headers, config){
+        		console.log(status);
+	        	console.log("request failed");
+        	});
+
+
+        // CALCULATE RATING AVERAGES/PERCENTS =========================================================
+
+
 	    // calculate average of 1 - 5 ratings
 	    this.getAverage = function(restaurant, rating) {
+
 	    	var average = 0;
         	restaurant.reviews.forEach(function(review){
         		average += review[rating];
@@ -45,11 +61,15 @@
 	    	percentYes = ((percentYes / restaurant.reviews.length)*100);
 	    	return percentYes;
 	    };
+
+
+	    // FILTERS =====================================================================================
+
+
 	    // create new array to put all the things that fit the categories checked
 	    $scope.foodIncludes = [];
 	    // this.occasionIncludes = [];
 
-	    // Next two functions:
 	    // add [category] to this.[category]Includes when that box is checked
 	    this.includeFood = function(food) {
 	    	//iterate through restaurants to check food types
@@ -67,7 +87,7 @@
 	    // 	//if the item in the array matches input occasion parameter, push it to this.occasionIncludes
 	    // };
 
-	    // filter by food
+	    // filter by food type selected
 	    this.foodFilter = function(restaurants) {
 	    	console.log("array = " + $scope.foodIncludes);
 	    	if ($scope.foodIncludes.length > 0 ) {
@@ -79,12 +99,17 @@
 	    	return restaurants;
 	    };
 
-	    // filter by occasion
+	    // filter by occasion type selected
 	    // this.occasionFilter = function() {
 	    // 	if (this.occasionIncludes.length > 0 ) {
 	    		
 	    // 	};
 	    // };
+
+	    
+
+	    // GOOGLE MAPS CONTROLS =========================================================================
+
 
 	    //new instance of the Geocode() object
 		var geocoder = new google.maps.Geocoder();
@@ -126,7 +151,8 @@
 		};
 
 
-		// REVIEW CONTROL FUNCTIONS ========================================================
+		// REVIEW CONTROLS ===============================================================================
+
 
 		this.addNew = function() {
 			//object to hold new review
@@ -135,6 +161,17 @@
 				"vegfriendliness":  0,
 				"deliciousness":    0
 			};
+		};
+
+		this.submitReview = function(reviewedRestaurant) {
+			console.log(reviewedRestaurant);
+			$scope.restaurants.forEach(function(restaurant) {
+				if (restaurant['name'] == reviewedRestaurant) {
+					restaurant['reviews'].push(that.newReview);
+					console.log(restaurant['reviews']);
+				};
+			});
+			that.reviewSubmitted = true;
 		};
 		
     }]);
