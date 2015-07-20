@@ -24,8 +24,14 @@ footer {
 	padding: 10px;
 	clear: both;
 }
-.review-checkboxes {
+.review-checkboxes li {
 	list-style: none;
+	padding-left: 0px;
+	width: 33%;
+	float: left;
+	display: inline;
+	padding: 3px;
+	font-size: 12px;
 }
 .thumb {
 	padding-right: 10px;
@@ -68,6 +74,9 @@ footer {
 }
 .clear {
 	clear: both;
+}
+.hidden {
+	display: none;
 }
 .center-element {
 	display: block;
