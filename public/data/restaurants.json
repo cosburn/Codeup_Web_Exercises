@@ -3,7 +3,7 @@
 	"address": "8407 Broadway St, San Antonio, TX 78209",
 	"phone": "(210) 826-4223",
 	"menu": "www.myvegeria.com",
-	"food": "american",
+	"food": "American",
 	"reviews": [
 		{
 			"name":"claireo",
@@ -56,7 +56,7 @@
 	"address": "200 E Grayson St #200, San Antonio, TX 78215",
 	"phone": "(210) 320-5865",
 	"menu": "https://locu.com/places/green-vegetarian-cuisine-at-the-pearl-san-antonio-us/#menu",
-	"food": "american",
+	"food": "American",
 	"reviews": [
 		{
 			"name":"claireo",
@@ -108,7 +108,7 @@
 	"address": "5307 Blanco Rd, San Antonio, TX 78216",
 	"phone": "(210) 342-3622",
 	"menu": "https://locu.com/places/thai-dee-restaurant-san-antonio-us/#menu",
-	"food": "thai",
+	"food": "Thai",
 	"reviews": [
 		{
 			"name":"claireo",
