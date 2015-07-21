@@ -6,6 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="css/box-sizing.css">
 	<link rel="stylesheet" type="text/css" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body ng-controller="RestaurantController as restCtrl">
 	<div class="content-wrapper">
@@ -30,78 +33,125 @@
 		<div ng-hide="restCtrl.reviewSubmitted">
 
 				<form>
-					<h2>Write a Review</h2>
-					<h3>What Restaurant?
+					<h2 >Write a Review</h2>
+					<div ng-hide="review.restaurant">
+						<h3 >What Restaurant?</h3>
 
-					<!-- select from list of restuarants that are already in system -->
-					
+						<!-- select from list of restuarants that are already in system -->
 						<select ng-model="review.restaurant" name="restaurants">
 							<option value="">Choose restaurant to review: </option>
 							<option ng-repeat="restaurant in restaurants" value="{{ restaurant['name'] }}">{{ restaurant['name'] }}</option>
 						</select>
-					</h3>
+					</div>
+					
 					<button ng-hide="restCtrl.newReview || review.restaurant" ng-click="restCtrl.addNew()">New Restaurant</button>
 
+					<!-- view restaurant info for chosen restaurant -->
+					<div ng-if="review.restaurant" ng-repeat="restaurant in restaurants | nameOfRestaurant:review.restaurant" >
+						<div class="view-box review-view-box">
+							<div id="map-container" ng-init="restCtrl.initMap(restaurant,'map-container')" class="map-container map-review-display"></div>
+										
+							<div class="row">
+								<h2>{{ restaurant['name'] }}</h2>
+								<p>{{ restaurant['address'] }}</p>
+								<p>{{ restaurant['phone'] }}</p>
+								<p >WEBSITE      MENU</p>
+							</div>
+						</div>
+					</div>
+
+
 					<!-- input fields for if restaurant is not already in system -->
-					<div ng-show="restCtrl.newReview">
-						<p><label name="rest-name">Name:</label>
-						<input type="text" name="rest-name" placeholder="Restaurant Name"></p>
+					<div ng-show="restCtrl.newRest">
+						<div class="row">
+							<label class="column one-fourth" name="rest-name">Name:</label>
+							<input class="column three-fourth" type="text" name="rest-name" placeholder="Restaurant Name">
+						</div>
 
-						<p><label name="rest-address">Address:</label>
-						<input type="text" name="rest-address" placeholder="123 Main Street"></p>
+						<div class="row">
+							<label class="column one-fourth" name="rest-address">Address:</label>
+							<input class="column three-fourth" type="text" name="rest-address" placeholder="123 Main Street">
+						</div>
 
-						<p><label name="rest-zip">Zip:</label>
-						<input type="text" name="rest-zip" placeholder="78205"></p>
+						<div class="row">
+							<label class="column one-fourth" name="rest-zip">Zip:</label>
+							<input class="column three-fourth" type="text" name="rest-zip" placeholder="78205">
+						</div>
 					</div>
 					<!-- end input fields if restaurant is not already in system -->
 					<div ng-show="review.restaurant">
-						<p><label name="veg-friendliness">Veg-friendliness:</label></p>
-						1 <input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="1">
-						<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="2">
-						<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="3">
-						<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="4">
-						<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="5"> 5
+					<!-- left column -->
+						<div class="row">
+							<div class="column one-half">
+								<p>
+									<label name="veg-friendliness">Veg-friendliness:</label>
+									1 
+									<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="1">
+									<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="2">
+									<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="3">
+									<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="4">
+									<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="5">
+									5
+								</p>
 
-						<p><label name="deliciousness">Deliciousness:</label></p>
-						1 <input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="1">
-						<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="2">
-						<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="3">
-						<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="4">
-						<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="5"> 5
+								<p>
+									<label name="deliciousness">Deliciousness:</label>
+									1 
+									<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="1">
+									<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="2">
+									<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="3">
+									<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="4">
+									<input ng-model="restCtrl.newReview['deliciousness']" type="radio" name="deliciousness" value="5"> 5
+								</p>
 
-						<p><label name="price">Price:</label></p>
-						$ <input ng-model="restCtrl.newReview['price']" type="radio" name="price" value="1">
-						<input ng-model="restCtrl.newReview['price']" type="radio" name="price" value="2">
-						<input ng-model="restCtrl.newReview['price']" type="radio" name="price" value="3"> $$$
+								<p>
+									<label name="price">Price:</label>
+									$ 
+									<input ng-model="restCtrl.newReview['price']" type="radio" name="price" value="1">
+									<input ng-model="restCtrl.newReview['price']" type="radio" name="price" value="2">
+									<input ng-model="restCtrl.newReview['price']" type="radio" name="price" value="3"> 
+									$$$
+								</p>
+							</div>
+						
+						<!-- end left column -->
+						<!-- begin right column -->
+							<div class="column one-half">
+								<p>
+									<label name="vegan">Vegan option(s)?</label>
+								</p>
+								Yes 
+									<input ng-model="restCtrl.newReview['vegan-option']" type="radio" name="vegan" value="true">
+								No 
+									<input ng-model="restCtrl.newReview['vegan-option']" type="radio" name="vegan" value="false">
 
-						<p><label name="vegan">Vegan option(s)?</label></p>
-						Yes <input ng-model="restCtrl.newReview['vegan-option']" type="radio" name="vegan" value="true">
-						No <input ng-model="restCtrl.newReview['vegan-option']" type="radio" name="vegan" value="false">
+								<p><label name="flexible">Flexible Menu?</label></p>
+								Yes <input ng-model="restCtrl.newReview['flexible']" type="radio" name="flexible" value="true">
+								No <input ng-model="restCtrl.newReview['flexible']" type="radio" name="flexible" value="false">
 
-						<p><label name="flexible">Flexible Menu?</label></p>
-						Yes <input ng-model="restCtrl.newReview['flexible']" type="radio" name="flexible" value="true">
-						No <input ng-model="restCtrl.newReview['flexible']" type="radio" name="flexible" value="false">
+								<!-- <p><label name="food">What kind of food?</label></p>
+								<select name="food">
+									<option value="American">American</option>
+									<option value="Vietnamese">Vietnamese</option>
+									<option value="Thai">Thai</option>
+								</select> -->
 
-						<!-- <p><label name="food">What kind of food?</label></p>
-						<select name="food">
-							<option value="American">American</option>
-							<option value="Vietnamese">Vietnamese</option>
-							<option value="Thai">Thai</option>
-						</select> -->
+								<!-- <p><label name="occasion">When's a good time to go?</label></p>
+								<ul class="review-checkboxes">
+									<li><input ng-model="restCtrl.newReview['occasion']" type="checkbox" value="Lunch">Lunch</li>
+									<li><input type="checkbox" value="Big Group">Big-Group</li>
+									<li><input type="checkbox" value="Date">Date</li>
+								</ul> -->
+							</div>
+							<div class="clear">
+								<p><label name="review">Your thoughts:</label></p>
+								<p><textarea ng-model="restCtrl.newReview['thoughts']" ></textarea></p>
 
-						<!-- <p><label name="occasion">When's a good time to go?</label></p>
-						<ul class="review-checkboxes">
-							<li><input ng-model="restCtrl.newReview['occasion']" type="checkbox" value="Lunch">Lunch</li>
-							<li><input type="checkbox" value="Big Group">Big-Group</li>
-							<li><input type="checkbox" value="Date">Date</li>
-						</ul> -->
-
-						<p><label name="review">Your thoughts:</label></p>
-						<p><textarea ng-model="restCtrl.newReview['thoughts']" ></textarea></p>
-
-						<button type="submit" ng-click="restCtrl.submitReview(review.restaurant)">Submit</button>
+								<button type="submit" ng-click="restCtrl.submitReview(review.restaurant)">Submit</button>
+							</div>
+						</div>
 					</div>
-				</form>
+			</form>
 
 		</div>
 	
@@ -126,7 +176,7 @@
 						
 						</div>
 						<div class="view-box column one-half">
-							<div id="map-container" ng-init="restCtrl.initMap(restaurant)" class="map-container"></div>
+							<div id="map-container-large" ng-init="restCtrl.initMap(restaurant,'map-container-large')" class="map-container"></div>
 										
 							<div class="row">
 								<p>{{ restaurant['address'] }}</p>

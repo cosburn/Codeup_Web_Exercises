@@ -39,12 +39,14 @@
 
 	    // calculate average of 1 - 5 ratings
 	    this.getAverage = function(restaurant, rating) {
-
 	    	var average = 0;
         	restaurant.reviews.forEach(function(review){
-        		average += review[rating];
+        		console.log(average + "+=" + review[rating] + "=");
+        		average += parseInt(review[rating]);
+        		console.log("average = "+average);
         	});
         	average = Math.round((average / restaurant.reviews.length));
+
 	    	return average;
 	    };
 
@@ -115,7 +117,7 @@
 		var geocoder = new google.maps.Geocoder();
 
 		//after window loads, initialize google map
-		this.initMap = function(restaurant) {
+		this.initMap = function(restaurant,containerId) {
 			
 			geocoder.geocode( {"address":restaurant['address']}, function(results,status) {
 				console.log(restaurant);
@@ -133,7 +135,7 @@
 						}
 					}
 
-					var map = new google.maps.Map(document.getElementById("map-container"), mapOptions);
+					var map = new google.maps.Map(document.getElementById(containerId), mapOptions);
 					map.setCenter(results[0].geometry.location)
 
 					//create marker
@@ -156,11 +158,12 @@
 
 		this.addNew = function() {
 			//object to hold new review
-			that.newReview = {
-				"name":             "",
-				"vegfriendliness":  0,
-				"deliciousness":    0
-			};
+			// that.newReview = {
+			// 	"name":             "",
+			// 	"vegfriendliness":  0,
+			// 	"deliciousness":    0
+			// };
+			that.newRest = true;
 		};
 
 		this.submitReview = function(reviewedRestaurant) {

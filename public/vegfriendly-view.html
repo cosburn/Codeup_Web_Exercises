@@ -6,6 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="css/box-sizing.css">
 	<link rel="stylesheet" type="text/css" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body ng-controller="RestaurantController as restCtrl">
 	<div class="content-wrapper">
@@ -29,17 +32,17 @@
 		<div ng-repeat="restaurant in restaurants | nameOfRestaurant:name" >
 			<h3 class="subtitle">({{ restaurant.reviews.length }} reviews)</h3>
 			<div class="row">
-				<div class="view-box column one-half">
+				<div class="view-box">
 					<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
-					<p>Delicioiusness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
+					<p>Deliciousness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
 					<p>Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0 }}% said yes</p>
 					<p>Flexible Menu? {{ restCtrl.getPercent(restaurant, "flexible") | number:0 }}% said yes</p>
 					<p>Good for meat friends? {{ restCtrl.getPercent(restaurant, "meat") | number:0 }}% said yes</p>
 					<p>Price: {{ restCtrl.getAverage(restaurant, "price") }}</p>
 					<p>Casual - - - - - Fancy</p>
 				</div>
-				<div class="view-box column one-half">
-					<div id="map-container" ng-init="restCtrl.initMap(restaurant)" class="map-container"></div>
+				<div class="view-box">
+					<div id="map-container" ng-init="restCtrl.initMap(restaurant,'map-container')" class="map-container"></div>
 								
 					<div class="row">
 						<p>{{ restaurant['address'] }}</p>

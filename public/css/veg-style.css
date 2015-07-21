@@ -95,7 +95,8 @@ textarea {
 }
 .view-box {
 	/*border: 1px solid black;*/
-	width: 100%;
+	width: 50%;
+	float: left;
 
 }
 .map-container {
@@ -109,3 +110,44 @@ textarea {
 	width: 50px;
 	margin-right: 10px;
 }
+.filtering-options {
+	float: none;
+}
+
+/* ====== MEDIA QUERIES ======== */
+
+/* screen sizes 500px and up */
+@media screen and (min-width:750px) {
+    .filtering-options {
+    	float: right;
+    	width: 33%;
+    }
+    .restaurant-list {
+    	float: left;
+    	width: 66%;
+    }
+    .map-review-display {
+    	width: 150px;
+		height: 125px;
+		float:left;
+    }
+    .review-view-box {
+    	width: 100%;
+    	float: none;
+		background-color: #fafafa;
+
+    }
+    .review-view-box p {
+    	width: 100%;
+    	float: none;
+    	font-size: 12px;
+    }
+
+}
+@media screen and (max-width:600px) {
+	.view-box {
+		float: none;
+		width: 100%;
+	}
+}
+

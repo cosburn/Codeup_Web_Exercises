@@ -6,6 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="css/box-sizing.css">
 	<link rel="stylesheet" type="text/css" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body ng-controller="RestaurantController as restCtrl">
 	<div class="content-wrapper">
@@ -24,49 +27,59 @@
 		<main>
 			<div >
 				<h2 class="center-text">Search:</h2>
-				<!-- filtering options -->
-				<input ng-model="query" class="center-element" type='text' placeholder="by name">
-				<h3 id="display-options" class="center-text subtitle">Filtering Options <span id="plus">+</span></h3>
+				<form>
+					<input ng-model="query" class="center-element" type='text' placeholder="by name">
+					<div class="clear"></div>
+				</form>
 
-				<div class="hidden" id="options">
-					<div class="row bottom-border">
-						<div>
-							<p>Food</p>
-							<ul class="review-checkboxes">
-								<li ng-repeat="food in foodTypes">
-									<input ng-click="restCtrl.includeFood(food)" type="checkbox" name="{{ food }}" value="{{ food }}">{{ food }}
-								</li>
-							</ul>
-						</div>
-						<div>
-							<p class="clear">Occasion</p>
-							<ul class="review-checkboxes">
-								<li><input type="checkbox" name="lunch" value="lunch">Lunch</li>
-								<li><input type="checkbox" name="big-group" value="big-group">Big Group</li>
-								<li><input type="checkbox" name="date" value="date">Date</li>
-							</ul>
-						</div>
-						<p><input type="checkbox">Also good for meat-eating friends<p>
-						<p><input type="checkbox">Vegan Options<p>
-					</div>
-				</div>
 
-			
-				<div ng-repeat="restaurant in restaurants | filter:restCtrl.foodFilter | filter:query | filter:query2 " ng-if="restaurants">
-					<!-- <img class='float-left clear thumb' src='http://placehold.it/100x100' /> -->
-					<div class="restaurant-card" >
-						<div class="float-right more-arrow">
-							<a href='vegfriendly-view.html'> > </a>
+				<div class="search-view-container">
+					<!-- filtering options -->
+					<div class="filtering-options">
+						<h3 id="display-options" class="center-text subtitle">Filtering Options <span id="plus">+</span></h3>
+
+						<div class="hidden" id="options">
+							<div class="row bottom-border">
+								<div>
+									<p>Food</p>
+									<ul class="review-checkboxes">
+										<li ng-repeat="food in foodTypes">
+											<input ng-click="restCtrl.includeFood(food)" type="checkbox" name="{{ food }}" value="{{ food }}">{{ food }}
+										</li>
+									</ul>
+								</div>
+								<div>
+									<p class="clear">Occasion</p>
+									<ul class="review-checkboxes">
+										<li><input type="checkbox" name="lunch" value="lunch">Lunch</li>
+										<li><input type="checkbox" name="big-group" value="big-group">Big Group</li>
+										<li><input type="checkbox" name="date" value="date">Date</li>
+									</ul>
+								</div>
+								<p><input type="checkbox">Also good for meat-eating friends<p>
+								<p><input type="checkbox">Vegan Options<p>
+							</div>
 						</div>
-						<div>
-							<h2>{{ restaurant.name }}</h2>
-							<p>Location: {{ restaurant.address }}</p>
-							<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
-							<p>Delicioussness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
-							<p>Has Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0}}% said yes</p>
+					</div><!-- end filtering options div -->
+
+					<div class="restaurant-list" >
+						<div ng-repeat="restaurant in restaurants | filter:restCtrl.foodFilter | filter:query | filter:query2 ">
+							<div class="restaurant-card" >
+								<div class="float-right more-arrow">
+									<a href='vegfriendly-view.html'> > </a>
+								</div>
+								<div>
+									<h2>{{ restaurant.name }}</h2>
+									<p>Location: {{ restaurant.address }}</p>
+									<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
+									<p>Delicioussness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
+									<p>Has Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0}}% said yes</p>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
+					</div> <!-- end restaurant list div -->
+
+				</div> <!-- end search view container div -->
 
 			</div>
 			
