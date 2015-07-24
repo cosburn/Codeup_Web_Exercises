@@ -1,0 +1,51 @@
+/*------------------------------------*\
+    #BASIC HELPERS
+\*------------------------------------*/
+
+.full-width {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+.max-full-width {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.muted {
+  color:#666;
+}
+.clearfix {
+  @include clearfix();
+}
+
+/*------------------------------------*\
+    #TEXT COLOR TRUMPS
+\*------------------------------------*/
+@each $color, $hex in $colors {
+  .text-#{$color} {
+    color: $hex !important;
+  }
+}
+
+/*------------------------------------*\
+    #BACKGROUND COLOR TRUMPS
+\*------------------------------------*/
+@each $color, $hex in $colors {
+  .bg-#{$color} {
+    background-color: $hex !important;
+  }
+}

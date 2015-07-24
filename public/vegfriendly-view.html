@@ -5,13 +5,16 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/box-sizing.css">
 	<link rel="stylesheet" type="text/css" href="css/grid.css">
+	<link href='http://fonts.googleapis.com/css?family=Pacifico|Bree+Serif|Open+Sans' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/small-style-guide-master/assets/css/styles.css"> -->
+
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body ng-controller="RestaurantController as restCtrl">
-	<div class="content-wrapper">
+	<div>
 	<header>
 		<!-- main navigation -->
 		<nav>
@@ -21,18 +24,21 @@
 			</ul>
 		</nav>
 		<!-- <img src="http://placehold.it/200x100" /> -->
-		<h1><a href="vegfriendly.html">VegFriendly</a></h1>
+
+		<h1 class="title"><a href="vegfriendly.html">VegFriendly</a></h1>
 		<h4 class="subtitle">Where vegetarians and friends can find a place to eat. </h4>
 
 		
 	</header>
 
-	<main>
-		<h1 ng-model="name">Vegeria</h1>
-		<div ng-repeat="restaurant in restaurants | nameOfRestaurant:name" >
+	<main class="content-wrapper">
+		<a class="float-right button" href="/vegfriendly-form.html">Write a Review</a>
+		<h1 ng-model="rest.name">Vegeria</h1>
+		<div ng-repeat="restaurant in restaurants | nameOfRestaurant:'Vegeria'" >
 			<h3 class="subtitle">({{ restaurant.reviews.length }} reviews)</h3>
-			<div class="row">
-				<div class="view-box">
+
+			<div class="row white-box small-text">
+				<div class="float-left column one-half">
 					<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
 					<p>Deliciousness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
 					<p>Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0 }}% said yes</p>
@@ -41,7 +47,7 @@
 					<p>Price: {{ restCtrl.getAverage(restaurant, "price") }}</p>
 					<p>Casual - - - - - Fancy</p>
 				</div>
-				<div class="view-box">
+				<div class="float-left column one-half">
 					<div id="map-container" ng-init="restCtrl.initMap(restaurant,'map-container')" class="map-container"></div>
 								
 					<div class="row">
@@ -55,9 +61,9 @@
 		</div>
 
 		<div id="reviews">
-			<h2 class="bottom-border">Reviews</h2>
-			<div ng-repeat="restaurant in restaurants | nameOfRestaurant:name">
-				<div ng-repeat="review in restaurant['reviews']" class="review-card bottom-border">
+			<h2>Reviews</h2>
+			<div ng-repeat="restaurant in restaurants | nameOfRestaurant:'Vegeria'">
+				<div ng-repeat="review in restaurant['reviews']" class="review-card white-box">
 						<img class="prof float-left" src="http://placehold.it/100x100" />
 						<p>{{ review['name'] }}</p>
 						<p>{{ review['thoughts'] }}</p>

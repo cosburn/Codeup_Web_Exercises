@@ -1,0 +1,27 @@
+/*------------------------------------*\
+    #COLOR LIST
+\*------------------------------------*/
+
+$colors: (
+  primary:         #3498db,
+  secondary:       #34495e,
+  tertiary:        #16a085,
+  alternate:       #e74c3c,
+  mid-gray:        #B7B7B7,
+  light-gray:      #F9F9F9,
+  border-gray:     #D8D8D8,
+  form-gray:       #989898,
+  white:           #FFFFFF
+);
+
+// Use key for color
+// Usage: foo { color: col("primary"); }
+// Compiles: foo { color: #57C9B4; }
+@function col($col) {
+  @return map-get($colors, '#{$col}');
+}
+
+
+body {
+  background-color: col("light-gray");
+}

@@ -5,51 +5,57 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/box-sizing.css">
 	<link rel="stylesheet" type="text/css" href="css/grid.css">
+	<link href='http://fonts.googleapis.com/css?family=Pacifico|Bree+Serif|Open+Sans' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
+
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body ng-controller="RestaurantController as restCtrl">
-	<div class="content-wrapper">
+	<div>
 		<header>
-			<nav>
+			<!-- <nav>
 				<ul>
 					<li><a>About</a></li>
 					<li><a>Contact</a></li>
 				</ul>
-			</nav>
-			<!-- <img src="http://placehold.it/200x100" /> -->
-			<h1><a href="vegfriendly.html">VegFriendly</a></h1>
+			</nav> -->
+			<img src="/img/vegLogo.png" />
+			<h1 class="title">
+				<a href="vegfriendly.html">VegFriendly</a>
+			</h1>
 			<h4 class="subtitle">Where vegetarians and friends can find a place to eat. </h4>
 			
 		</header>
-		<main>
+		<main class="content-wrapper">
 			<div >
 				<h2 class="center-text">Search:</h2>
 				<form>
-					<input ng-model="query" class="center-element" type='text' placeholder="by name">
+					<input ng-model="query" class="center-element wide" type='text' placeholder="by name">
 					<div class="clear"></div>
 				</form>
 
 
 				<div class="search-view-container">
 					<!-- filtering options -->
-					<div class="filtering-options">
+					<div class="filtering-options float-right">
 						<h3 id="display-options" class="center-text subtitle">Filtering Options <span id="plus">+</span></h3>
 
 						<div class="hidden" id="options">
-							<div class="row bottom-border">
+							<div class="row">
 								<div>
-									<p>Food</p>
+									<h3>Food</h3>
 									<ul class="review-checkboxes">
-										<li ng-repeat="food in foodTypes">
-											<input ng-click="restCtrl.includeFood(food)" type="checkbox" name="{{ food }}" value="{{ food }}">{{ food }}
-										</li>
+										<div class="row">
+											<li ng-repeat="food in foodTypes" class="small-text float-left column one-third">
+												<input ng-click="restCtrl.includeFood(food)" type="checkbox" name="{{ food }}" value="{{ food }}">{{ food }}
+											</li>
+										</div>
 									</ul>
 								</div>
 								<div>
-									<p class="clear">Occasion</p>
+									<h3 class="clear">Occasion</h3>
 									<ul class="review-checkboxes">
 										<li><input type="checkbox" name="lunch" value="lunch">Lunch</li>
 										<li><input type="checkbox" name="big-group" value="big-group">Big Group</li>
@@ -62,7 +68,9 @@
 						</div>
 					</div><!-- end filtering options div -->
 
-					<div class="restaurant-list" >
+
+					<!-- to hide this until they search, ng-show="query" -->
+					<div ng-show="query" class="restaurant-list" >
 						<div ng-repeat="restaurant in restaurants | filter:restCtrl.foodFilter | filter:query | filter:query2 ">
 							<div class="restaurant-card" >
 								<div class="float-right more-arrow">
@@ -70,10 +78,10 @@
 								</div>
 								<div>
 									<h2>{{ restaurant.name }}</h2>
-									<p>Location: {{ restaurant.address }}</p>
+									<p class="subtitle">{{ restaurant.address }}</p>
 									<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
 									<p>Delicioussness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
-									<p>Has Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0}}% said yes</p>
+									<p>Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0}}% said yes</p>
 								</div>
 							</div>
 						</div>

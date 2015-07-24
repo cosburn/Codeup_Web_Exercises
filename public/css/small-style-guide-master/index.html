@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>My Style Guide</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <style>
+      /* These are for style guide only */
+      section {
+        padding:40px;
+        margin-bottom:60px;
+      }
+      .swatch {
+        border-radius: 4px;
+        width:128px;
+        overflow: hidden;
+        border:1px solid #eee;
+        float:left;
+        margin:10px;
+      }
+      .swatch .swatch-color {
+        height:120px;
+        border-bottom:1px solid #eee;
+      }
+      .swatch .swatch-info {
+        background: #ffffff;
+        padding:10px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <section class="clearfix">
+      <h6 class="uppercase muted">Colors</h6>
+      <hr />
+      <div class="swatch">
+        <div class="swatch-color bg-primary"></div>
+        <div class="swatch-info">
+          Primary
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color bg-secondary"></div>
+        <div class="swatch-info">
+          Secondary
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color bg-tertiary"></div>
+        <div class="swatch-info">
+          Tertiary
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color bg-alternate"></div>
+        <div class="swatch-info">
+          Alternate
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color bg-mid-gray"></div>
+        <div class="swatch-info">
+          Mid Gray
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color bg-light-gray"></div>
+        <div class="swatch-info">
+          Light Gray
+        </div>
+      </div>
+      <div class="swatch two columns">
+        <div class="swatch-color bg-white"></div>
+        <div class="swatch-info">
+          White
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <h6 class="uppercase muted">Typography</h6>
+      <hr />
+      <h1>H1 Example</h1>
+      <h2>H2 Example</h2>
+      <h3>H3 Example</h3>
+      <h4>H4 Example</h4>
+      <h5>H5 Example</h5>
+      <h6>H6 Example</h6>
+
+      <p>Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <ul>
+        <li>List Item One</li>
+        <li>List Item Two</li>
+        <li>List Item Three</li>
+      </ul>
+      <button class="button button-default">Button Default</button>
+      <button class="button button-primary">Button Primary</button>
+      <button class="button button-secondary">Button Secondary</button>
+      <button class="button button-tertiary">Button Tertiary</button>
+
+    </section>
+
+    <section>
+      <h6 class="uppercase muted">Forms</h6>
+      <hr />
+      <form>
+        <div class="row">
+          <div class="six columns">
+            <label for="exampleEmailInput">Your email</label>
+            <input class="full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+          </div>
+          <div class="six columns">
+            <label for="exampleRecipientInput">Reason for contacting</label>
+            <select class="full-width" id="exampleRecipientInput">
+              <option value="Option 1">Questions</option>
+              <option value="Option 2">Admiration</option>
+              <option value="Option 3">Can I get your number?</option>
+            </select>
+          </div>
+        </div>
+        <label for="exampleMessage">Message</label>
+        <textarea class="full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+        <label class="example-send-yourself-copy">
+          <input type="checkbox">
+          <span class="label-body">Send a copy to yourself</span>
+        </label>
+        <input class="button button-secondary" type="submit" value="Submit">
+      </form>
+    </section>
+
+
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

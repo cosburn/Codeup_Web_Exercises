@@ -41,12 +41,11 @@
 	    this.getAverage = function(restaurant, rating) {
 	    	var average = 0;
         	restaurant.reviews.forEach(function(review){
-        		console.log(average + "+=" + review[rating] + "=");
+        		// console.log(average + "+=" + review[rating] + "=");
         		average += parseInt(review[rating]);
-        		console.log("average = "+average);
+        		// console.log("average = "+average);
         	});
         	average = Math.round((average / restaurant.reviews.length));
-
 	    	return average;
 	    };
 
@@ -188,7 +187,7 @@
        	return function(restaurants, name) {
     		var filtered = [];
     		restaurants.forEach(function(restaurant) {
-    			if (restaurant['name'] == "Vegeria") {
+    			if (restaurant['name'] == name) {
     				filtered.push(restaurant);
     			};
     		});
