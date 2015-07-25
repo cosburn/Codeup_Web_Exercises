@@ -96,6 +96,22 @@
 									<input ng-model="restCtrl.newReview['vegfriendliness']" type="radio" name="veg-friendliness" value="5">
 									5
 								</p>
+									<span id="vegfriendlinessImage1">
+										<img id="vegfriendliness1" ng-mouseenter="restCtrl.highlightCarrot('vegfriendliness',1,true)" ng-mouseleave="restCtrl.highlightCarrot('vegfriendliness',1,false)" class="icon" src="/img/icon_carrot_gray.png" ng-mousedown="restCtrl.addRating('vegfriendliness',1)"/>
+									</span>
+									<span id="vegfriendlinessImage2">
+										<img id="vegfriendliness2" ng-mouseenter="restCtrl.highlightCarrot('vegfriendliness',2,true)" ng-mouseleave="restCtrl.highlightCarrot('vegfriendliness',2,false)" class="icon" src="/img/icon_carrot_gray.png" ng-mousedown="restCtrl.addRating('vegfriendliness',2)" />
+									</span>
+									<span id="vegfriendlinessImage3">
+										<img id="vegfriendliness3" ng-mouseenter="restCtrl.highlightCarrot('vegfriendliness',3,true)" ng-mouseleave="restCtrl.highlightCarrot('vegfriendliness',3,false)" class="icon" src="/img/icon_carrot_gray.png" ng-mousedown="restCtrl.addRating('vegfriendliness',3)" />
+									</span>
+									<span id="vegfriendlinessImage4">
+										<img id="vegfriendliness4" ng-mouseenter="restCtrl.highlightCarrot('vegfriendliness',4,true)" ng-mouseleave="restCtrl.highlightCarrot('vegfriendliness',4,false)" class="icon" src="/img/icon_carrot_gray.png" ng-mousedown="restCtrl.addRating('vegfriendliness',4)" />
+									</span>
+									<span id="vegfriendlinessImage5">
+										<img id="vegfriendliness5" ng-mouseenter="restCtrl.highlightCarrot('vegfriendliness',5,true)" ng-mouseleave="restCtrl.highlightCarrot('vegfriendliness',5,false)" class="icon" src="/img/icon_carrot_gray.png" ng-mousedown="restCtrl.addRating('vegfriendliness',5)" />
+									</span>
+									
 
 								<p>
 									<label name="deliciousness">Deliciousness:</label>
@@ -213,6 +229,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+	<script type="text/javascript" src="js/angular-sanitize.js"></script>
 	<script type="text/javascript" src="js/restaurantModule.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
 	<script type="text/javascript" src="js/searchModule.js"></script>

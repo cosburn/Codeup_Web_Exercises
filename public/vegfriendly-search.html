@@ -14,7 +14,7 @@
 </head>
 <body ng-controller="RestaurantController as restCtrl">
 	<div>
-		<header>
+		<header class="pinstripe">
 			<!-- <nav>
 				<ul>
 					<li><a>About</a></li>
@@ -25,9 +25,10 @@
 			<h1 class="title">
 				<a href="vegfriendly.html">VegFriendly</a>
 			</h1>
-			<h4 class="subtitle">Where vegetarians and friends can find a place to eat. </h4>
-			
+			<h4 class="subtitle">Where vegetarians and friends can find a place to eat. </h4>	
 		</header>
+		<div class="texture-bar white-carbon bottom-border"></div>
+
 		<main class="content-wrapper">
 			<div >
 				<h2 class="center-text">Search:</h2>
@@ -70,7 +71,7 @@
 
 
 					<!-- to hide this until they search, ng-show="query" -->
-					<div ng-show="query" class="restaurant-list" >
+					<div  class="restaurant-list" >
 						<div ng-repeat="restaurant in restaurants | filter:restCtrl.foodFilter | filter:query | filter:query2 ">
 							<div class="restaurant-card" >
 								<div class="float-right more-arrow">
@@ -79,9 +80,21 @@
 								<div>
 									<h2>{{ restaurant.name }}</h2>
 									<p class="subtitle">{{ restaurant.address }}</p>
-									<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
-									<p>Delicioussness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
-									<p>Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0}}% said yes</p>
+									<p>Veg-friendliness: 
+										<span ng-bind-html="restCtrl.getIcons(restCtrl.getAverage(restaurant, 'vegfriendliness'), 'carrot')"></span>
+									</p>
+									<p>Deliciousness: 
+										<span ng-bind-html="restCtrl.getIcons(restCtrl.getAverage(restaurant, 'deliciousness'), 'carrot')"></span>
+									</p>
+									<p>
+										Vegan options? 
+										<span ng-class="{
+										'green-text': restCtrl.getPercent(restaurant, 'vegan-option') > 50, 
+										'red-text':   restCtrl.getPercent(restaurant, 'vegan-option') < 50
+										}">
+											{{ restCtrl.getPercent(restaurant, "vegan-option") | number:0 }}% said yes
+										</span>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -99,9 +112,9 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+	<script type="text/javascript" src="js/angular-sanitize.js"></script>
 	<script type="text/javascript" src="js/restaurantModule.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
-	<script type="text/javascript" src="js/searchModule.js"></script>
 	<script type="text/javascript">
 
 		"use strict";

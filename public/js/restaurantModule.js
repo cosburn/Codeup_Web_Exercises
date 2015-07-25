@@ -1,7 +1,7 @@
 "use strict";
 
 (function() {
-    var app = angular.module("restaurantModule", []);
+    var app = angular.module("restaurantModule", ['ngSanitize']);
 
     app.controller("RestaurantController", ['$scope', '$http', function($scope, $http) {
 
@@ -12,6 +12,7 @@
 	   // Create variable to hold rating and average values
     	$scope.restaurants = [];
     	$scope.foodTypes = [];
+    	$scope.carrotIcon = 'icon_carrot.png';
     	var that = this;
 
     	// get data
@@ -61,6 +62,17 @@
 	    	});
 	    	percentYes = ((percentYes / restaurant.reviews.length)*100);
 	    	return percentYes;
+	    };
+
+	    // populate rating icons
+	    this.getIcons = function(number, icon) {
+	    	var iconHtml = '';
+	    	for (var i = 0; i < number; i++) {
+	    		console.log("i = " + i);
+	    		iconHtml += "<img class='icon' src='/img/icon_" + icon + ".png' />" ;
+	    	};
+	    	console.log(iconHtml);
+	    	return iconHtml;
 	    };
 
 
@@ -154,6 +166,8 @@
 
 		// REVIEW CONTROLS ===============================================================================
 
+		//hold new review, bind data to object while filling out form
+		this.newReview = {};
 
 		this.addNew = function() {
 			//object to hold new review
@@ -175,6 +189,35 @@
 			});
 			that.reviewSubmitted = true;
 		};
+
+		this.highlightCarrot = function(rating,num,bool) {
+			var showCarrot = '/img/icon_carrot.png';
+			var hideCarrot = '/img/icon_carrot_gray.png';
+			console.log(bool);
+
+			// true - called by mouseenter event, when they're hovering over
+			if( bool == true ) {
+				for (var i = 0; i < num ;i++) {
+					//count up span elements by number ID and change inner html
+					document.getElementById(rating + (i+1)).src = showCarrot;
+				};
+			};
+			// false - called by mouseleave event, when they're no longer hovering over
+			if( bool == false)  {
+				for (var i = 0; i < 5 ;i++) {
+					//count up span elements by number ID and change inner html
+					document.getElementById(rating + (i+1)).src = hideCarrot;
+				};
+			};
+		};
+		this.addRating = function(rating, value) {
+			var showCarrot = 
+			that.newReview[rating] = value;
+			console.log(that.newReview);
+			
+
+
+		};
 		
     }]);
 
@@ -193,5 +236,5 @@
     		});
     		return filtered;
     	};
-    });    
+    });   
 })();

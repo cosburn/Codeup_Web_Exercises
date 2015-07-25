@@ -4,7 +4,7 @@
 	<title>VegFriendly</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/box-sizing.css">
-	<link rel="stylesheet" type="text/css" href="css/grid.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/grid.css"> -->
 	<link href='http://fonts.googleapis.com/css?family=Pacifico|Bree+Serif|Open+Sans' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/veg-style.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/small-style-guide-master/assets/css/styles.css"> -->
@@ -38,16 +38,48 @@
 			<h3 class="subtitle">({{ restaurant.reviews.length }} reviews)</h3>
 
 			<div class="row white-box small-text">
-				<div class="float-left column one-half">
-					<p>Veg-friendliness: {{ restCtrl.getAverage(restaurant, "vegfriendliness") }}</p>
-					<p>Deliciousness: {{ restCtrl.getAverage(restaurant, "deliciousness") }}</p>
-					<p>Vegan options? {{ restCtrl.getPercent(restaurant, "vegan-option") | number:0 }}% said yes</p>
-					<p>Flexible Menu? {{ restCtrl.getPercent(restaurant, "flexible") | number:0 }}% said yes</p>
-					<p>Good for meat friends? {{ restCtrl.getPercent(restaurant, "meat") | number:0 }}% said yes</p>
+				<div class="column one-half">
+					<h2>
+						Veg-friendliness: 
+							<span ng-bind-html="restCtrl.getIcons(restCtrl.getAverage(restaurant, 'vegfriendliness'), 'carrot')">
+							</span>
+					</h2>
+					<h2>
+						Deliciousness: 
+							<span ng-bind-html="restCtrl.getIcons(restCtrl.getAverage(restaurant, 'deliciousness'), 'carrot')">
+							</span>
+					</h2>
+					<p>
+						Vegan options? 
+						<span ng-class="{
+							'green-text': restCtrl.getPercent(restaurant, 'vegan-option') > 50, 
+							'red-text':   restCtrl.getPercent(restaurant, 'vegan-option') < 50
+							}">
+							{{ restCtrl.getPercent(restaurant, "vegan-option") | number:0 }}% said yes
+						</span>
+					</p>
+					<p>
+						Flexible Menu?
+						<span ng-class="{
+							'green-text': restCtrl.getPercent(restaurant, 'flexible') > 50, 
+							'red-text':   restCtrl.getPercent(restaurant, 'flexible') < 50
+							}">
+							{{ restCtrl.getPercent(restaurant, "flexible") | number:0 }}% said yes
+						</span> 
+					</p>
+					<p>
+						Good for meat friends? 
+						<span ng-class="{
+							'green-text': restCtrl.getPercent(restaurant, 'meat') > 50, 
+							'red-text':   restCtrl.getPercent(restaurant, 'meat') < 50
+							}">
+							{{ restCtrl.getPercent(restaurant, "meat") | number:0 }}% said yes
+						</span>
+					</p>
 					<p>Price: {{ restCtrl.getAverage(restaurant, "price") }}</p>
 					<p>Casual - - - - - Fancy</p>
 				</div>
-				<div class="float-left column one-half">
+				<div class="column one-half">
 					<div id="map-container" ng-init="restCtrl.initMap(restaurant,'map-container')" class="map-container"></div>
 								
 					<div class="row">
@@ -79,8 +111,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+	<script type="text/javascript" src="js/angular-sanitize.js"></script>
 	<script type="text/javascript" src="js/restaurantModule.js"></script>
-	<script type="text/javascript" src="js/searchModule.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4FaZJxWPYoRhCUvZaNp_L19IhdaLgURk"></script>
 	<script type="text/javascript">
 	"use strict";

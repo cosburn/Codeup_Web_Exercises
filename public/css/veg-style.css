@@ -1,4 +1,52 @@
+/* ===== GRID ===================================================== */
 
+@media screen and (min-width: 450px) {
+	html {
+    box-sizing: border-box;
+	}
+	*, *:before, *:after {
+	    box-sizing: inherit;
+	}
+	.container {
+	    margin: 0 auto;
+	    width: 80%;
+	    max-width: 1200px;
+	}
+	.row {
+		width: 100%;
+	}
+	.row:after {
+	    content: "";
+	    display: table;
+	    clear: both;
+	}
+	.column {
+		width: 100%;
+		float: left;
+		/*padding: 10px;*/
+	}
+	.column.one-half {
+		width: 50%;
+	}
+	.column.one-third {
+		width: 33.3%;
+	}
+	.column.two-third {
+		width: 66.6%;
+	}
+	.column.one-fourth {
+		width: 25%;
+	}
+	.column.three-fourth {
+		width: 75%;
+	}
+	.column.one-sixth {
+		width: 16.6%;
+	}
+	.column.one-eighth {
+		width: 12.5%;
+	}
+}
 
 /* ===== BASIC PAGE ELEMENTS ======================================= */
 
@@ -59,7 +107,29 @@ footer {
 	text-align: center;
 }
 .bottom-border {
-	border-bottom: 2px solid black;
+	border-bottom: 10px solid #fafafa;
+}
+.texture-bar {
+	width: 100%;
+	height: 25px;
+}
+.pinstripe {
+	background-image: url('/img/patterns/pinstripe.png');
+}
+.white-carbon {
+	background-image: url('/img/patterns/white_carbon.png');
+}
+.icon {
+	width: 15px;
+}
+.red-text {
+	color: red;
+}
+.green-text {
+	color: #3bda00;
+}
+.bold {
+	font-weight: bold;
 }
 
 /* ===== LISTS ===================================================== */
@@ -233,6 +303,19 @@ input[type="button"] {
 		width: 100%;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
